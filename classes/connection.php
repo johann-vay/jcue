@@ -1,59 +1,90 @@
 <?php
 
-/*
- * Deux fonctions sont crées pour lancer une requéte SQL. Un exmple d'appel de ces fonctions dans du code :
- *  - $tableauDeResultats = Connexion::query("SELECT * FROM nom_table");
- *    Le résultat de la requète est enregistré dans la variable $tableauDeResultats 
- *  - $succes = Connexion::exec("INSERT..."); marche aussi pour UPDATE et DELETE
- *    Le résultat de la requete est placé dans la variable $succes : si 0 alors la requète n'a pas
- *    fonctionnée, sinon $succes contiendra le nombre d'enregistrement affectés
- */
-
-class Connection {
-
-    private static $_pdo = null;
-
-    
-    
-    
-    private static $connection = null;
-    private $pdo = null;
-    private $host = "localhost";
-    private $login = "root";
-    private $pass = "pwroot";
-    private $db = "jcue";
-     
-    private function __construct(){
-        $pdo = new PDO("mysql:host=".$this->host.";dbname=".$this->db, $this->login, $this->pass);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+class Connection
+{
+  /**
+   * Instance de la classe PDO
+   *
+   * @var PDO
+   * @access private
+   */ 
+  private $PDOInstance = null;
+ 
+   /**
+   * Instance de la classe SPDO
+   *
+   * @var SPDO
+   * @access private
+   * @static
+   */ 
+  private static $instance = null;
+ 
+  /**
+   * Constante: nom d'utilisateur de la bdd
+   *
+   * @var string
+   */
+  const DEFAULT_SQL_USER = 'root';
+ 
+  /**
+   * Constante: hôte de la bdd
+   *
+   * @var string
+   */
+  const DEFAULT_SQL_HOST = 'localhost';
+ 
+  /**
+   * Constante: hôte de la bdd
+   *
+   * @var string
+   */
+  const DEFAULT_SQL_PASS = 'pwroot';
+ 
+  /**
+   * Constante: nom de la bdd
+   *
+   * @var string
+   */
+  const DEFAULT_SQL_DTB = 'jcue';
+ 
+  /**
+   * Constructeur
+   *
+   * @param void
+   * @return void
+   * @see PDO::__construct()
+   * @access private
+   */
+  private function __construct()
+  {
+    $this->PDOInstance = new PDO('mysql:dbname='.self::DEFAULT_SQL_DTB.';host='.self::DEFAULT_SQL_HOST,self::DEFAULT_SQL_USER ,self::DEFAULT_SQL_PASS);    
+  }
+ 
+   /**
+    * Crée et retourne l'objet SPDO
+    *
+    * @access public
+    * @static
+    * @param void
+    * @return SPDO $instance
+    */
+  public static function getInstance()
+  {  
+    if(is_null(self::$instance))
+    {
+      self::$instance = new Connection();
     }
-     
-    public static function getInstance(){
-        if (is_null(self::$connection)){
-            self::$connection = new self();
-        } else {
-             return self::$connection;
-        }
-    }
-    
-
-    public function query($query) {
-        if (is_null(self::$connection)) {
-            self::getInstance();
-        }
-        
-        $result = self::$connection->query($query);
-        if(!$result){
-            throw new Exception('Erreur de requête : '.$query);
-        }
-        return $result->fetchAll(PDO::FETCH_NUM);
-    }
-
-    public static function exec($query) {
-        if (is_null(self::$connection)) {
-            self::getInstance();
-        }
-        return self::$connection->exec($query);
-    }
-
+    return self::$instance;
+  }
+ 
+  /**
+   * Exécute une requête SQL avec PDO
+   *
+   * @param string $query La requête SQL
+   * @return PDOStatement Retourne l'objet PDOStatement
+   */
+  public function query($query)
+  {
+    return $this->PDOInstance->query($query);
+  }
 }
