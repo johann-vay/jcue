@@ -13,29 +13,36 @@ class Connection {
 
     private static $_pdo = null;
 
-    private function __construct() {
-        
+    
+    
+    
+    private static $connection = null;
+    private $pdo = null;
+    private $host = "localhost";
+    private $login = "root";
+    private $pass = "pwroot";
+    private $db = "jcue";
+     
+    private function __construct(){
+        $pdo = new PDO("mysql:host=".$this->host.";dbname=".$this->db, $this->login, $this->pass);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
-
-    private static function _get() {
-        $dsn = 'mysql:dbname=jcue;host=127.0.0.1';
-        $user = 'root';
-        $password = 'pwroot';
-
-        try {
-            self::$_pdo = new PDO($dsn, $user, $password);
-        } catch (PDOException $e) {
-            echo 'Connexion échouée : ' . $e->getMessage();
+     
+    public static function getInstance(){
+        if (is_null(self::$connection)){
+            self::$connection = new self();
+        } else {
+             return self::$connection;
         }
-        self::$_pdo->exec('SET NAMES \'utf8\'');
     }
+    
 
-    public static function query($query) {
-        if (is_null(self::$_pdo)) {
-            self::_get();
+    public function query($query) {
+        if (is_null(self::$connection)) {
+            self::getInstance();
         }
         
-        $result = self::$_pdo->query($query);
+        $result = self::$connection->query($query);
         if(!$result){
             throw new Exception('Erreur de requête : '.$query);
         }
@@ -43,10 +50,10 @@ class Connection {
     }
 
     public static function exec($query) {
-        if (is_null(self::$_pdo)) {
-            self::_get();
+        if (is_null(self::$connection)) {
+            self::getInstance();
         }
-        return self::$_pdo->exec($query);
+        return self::$connection->exec($query);
     }
 
 }

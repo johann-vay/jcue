@@ -16,7 +16,17 @@ class userDAO {
     private $database;
     
     function __construct() {
-        $this->database = Connection::_get();
+        $this->database = Connection::getInstance();
+    }
+
+    function getDatabase() {
+        return $this->database;
+    }
+    
+    public function usersList(){
+        $query = 'SELECT * from user';
+        $result = $this->database->query($query);
+        return $result;
     }
 
 
