@@ -1,5 +1,5 @@
 <?php
-require_once '../classes/connection.php';
+require_once '../required.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,26 +11,20 @@ require_once '../classes/connection.php';
  *
  * @author Johann
  */
-class userDAO {
+class UserDAO {
     
-    private $database;
     
     function __construct() {
-        $this->database = Connection::getInstance();
     }
     
-    public function query($query){
-    return $this->PDOInstance->query($query);
-  }
     
     public function usersList(){
-        $query = 'SELECT * from user';
-        $result = $this->database->query($query);
-        return $result;
+        $query = 'SELECT  id, adresse, codePostal, ville, mail, telephone, login, password, type from utilisateur';
+        $arrayUsers = Connection::query($query);
+        foreach ($arrayUsers as $user) {
+            $users[] = new user($user[0], $user[1], $user[2], $user[3], $user[4], $user[5], $user[6], $user[7], $user[8]);
+        }
+        return $users;
     }
 
-
 }
-
-$userDAO = new userDAO();
-echo $userDAO->usersList();
