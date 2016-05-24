@@ -12,8 +12,7 @@ require_once '../required.php';
  * @author Johann 
  */
 class UserDAO {
-    
-    
+        
     function __construct() {
     }
     
