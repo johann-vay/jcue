@@ -1,19 +1,25 @@
 <?php
 
-class Particulier extends user{
+class Particulier extends User{
+    
+    private $id;
     private $nom;
     private $prenom;
     private $urlVideo;
-    //private $id;
     private $id_cv;
     
-    function __construct($nom, $prenom, $urlVideo, $id_cv) {
+    function __construct($id, $nom, $prenom, $urlVideo, $id_cv) {
+        $this->id = $id;
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->urlVideo = $urlVideo;
         $this->id_cv = $id_cv;
     }
-    
+
+    function getId() {
+        return $this->id;
+    }
+
     function getNom() {
         return $this->nom;
     }
@@ -28,6 +34,10 @@ class Particulier extends user{
 
     function getId_cv() {
         return $this->id_cv;
+    }
+
+    function setId($id) {
+        $this->id = $id;
     }
 
     function setNom($nom) {
@@ -45,7 +55,6 @@ class Particulier extends user{
     function setId_cv($id_cv) {
         $this->id_cv = $id_cv;
     }
-
 
 
     
