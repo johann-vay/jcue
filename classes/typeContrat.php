@@ -1,6 +1,6 @@
 <?php
 
-class typeContrat {
+class TypeContrat {
     private $id;
     private $libelle;
     

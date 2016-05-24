@@ -10,7 +10,7 @@
  *
  * @author Johann
  */
-class user {
+class User {
     
     private $id;
     private $adresse;

@@ -1,6 +1,6 @@
 <?php
 
-class cv {
+class Cv {
     
     private $id;
     private $titre;

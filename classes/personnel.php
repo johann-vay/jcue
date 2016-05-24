@@ -1,6 +1,6 @@
 <?php
 
-class personnel extends user{
+class Personnel extends user{
     private $nom;
     private $prenom;
     

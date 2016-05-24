@@ -1,6 +1,6 @@
 <?php
 
-class experiencePro {
+class ExperiencePro {
     private $id;
     private $lieu;
     private $dateDebut;

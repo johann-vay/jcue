@@ -1,6 +1,6 @@
 <?php
 
-class formation {
+class Formation {
     private $id;
     private $intitule;
     private $anneeDebut;

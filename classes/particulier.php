@@ -1,6 +1,6 @@
 <?php
 
-class particulier extends user{
+class Particulier extends user{
     private $nom;
     private $prenom;
     private $urlVideo;

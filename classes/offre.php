@@ -1,6 +1,6 @@
 <?php
 
-class offre {
+class Offre {
     
 
     private $id;

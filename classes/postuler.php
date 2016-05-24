@@ -1,6 +1,6 @@
 <?php
 
-class postuler {
+class Postuler {
     private $id;
     private $id_offre;
     

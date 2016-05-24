@@ -1,6 +1,6 @@
 <?php
 
-class entreprise {
+class Entreprise {
     private $id;
     private $raisonSociale;
     private $numeroSiret;

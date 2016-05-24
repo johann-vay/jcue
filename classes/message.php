@@ -1,6 +1,6 @@
 <?php
 
-class message {
+class Message {
     private $id;
     private $contenu;
     private $id_utilisateur;

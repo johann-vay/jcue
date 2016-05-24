@@ -22,7 +22,7 @@ class UserDAO {
         $query = 'SELECT  id, adresse, codePostal, ville, mail, telephone, login, password, type from utilisateur';
         $arrayUsers = Connection::query($query);
         foreach ($arrayUsers as $user) {
-            $users[] = new user($user[0], $user[1], $user[2], $user[3], $user[4], $user[5], $user[6], $user[7], $user[8]);
+            $users[] = new User($user[0], $user[1], $user[2], $user[3], $user[4], $user[5], $user[6], $user[7], $user[8]);
         }
         return $users;
     }
