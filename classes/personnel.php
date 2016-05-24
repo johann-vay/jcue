@@ -5,7 +5,7 @@ class Personnel extends User{
     private $nom;
     private $prenom;
     
-    function __construct($id, $nom, $prenom) {
+    function __construct($id, $nom, $prenom, $adresse, $codePostal, $ville, $mail, $telephone, $login, $password, $type) {
         parent::__construct($id, $adresse, $codePostal, $ville, $mail, $telephone, $login, $password, $type);
         $this->id = $id;
         $this->nom = $nom;

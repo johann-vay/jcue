@@ -21,7 +21,7 @@ class Particulier extends User{
         return $this->id;
     }
 
-    function getNom() {
+    function getNom() { 
         return $this->nom;
     }
 
