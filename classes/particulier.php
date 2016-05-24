@@ -9,7 +9,8 @@ class Particulier extends User{
     private $id_cv;
     
     function __construct($id, $nom, $prenom, $urlVideo, $id_cv) {
-        $this->id = $id;
+        parent::__construct($id, $adresse, $codePostal, $ville, $mail, $telephone, $login, $password, $type);
+        $this->id =  $id;
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->urlVideo = $urlVideo;
