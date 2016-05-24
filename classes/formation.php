@@ -1,7 +1,7 @@
 <?php
 
 class Formation {
-    
+     
     private $id;
     private $intitule;
     private $anneeDebut;

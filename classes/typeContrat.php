@@ -1,7 +1,7 @@
 <?php
 
 class TypeContrat {
-    
+     
     private $id;
     private $libelle;
     

@@ -1,7 +1,7 @@
 <?php
 
 class Postuler {
-    
+     
     private $id;
     private $id_offre;
     

@@ -1,7 +1,7 @@
 <?php
 
 class Offre {
-    
+     
     private $id;
     private $libelle;
     private $duree;

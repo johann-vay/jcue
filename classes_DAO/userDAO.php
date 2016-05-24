@@ -9,7 +9,7 @@ require_once '../required.php';
 /**
  * Description of userDAO
  *
- * @author Johann
+ * @author Johann 
  */
 class UserDAO {
     

@@ -22,7 +22,7 @@ class User {
     private $password;
     private $type;
     
-    
+     
     function __construct($id, $adresse, $codePostal, $ville, $mail, $telephone, $login, $password, $type) {
         $this->id = $id;
         $this->adresse = $adresse;

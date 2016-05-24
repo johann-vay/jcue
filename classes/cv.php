@@ -20,7 +20,7 @@ class Cv {
         $this->id_utilisateur = $id_utilisateur;
     }
     
-    
+     
     function getId() {
         return $this->id;
     }
