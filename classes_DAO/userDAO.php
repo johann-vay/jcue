@@ -17,7 +17,6 @@ class UserDAO {
     function __construct() {
     }
     
-    
     public function usersList(){
         $query = 'SELECT  id, adresse, codePostal, ville, mail, telephone, login, password, type '
                 . 'FROM utilisateur';

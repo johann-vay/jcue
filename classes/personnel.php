@@ -1,6 +1,7 @@
 <?php
 
 class Personnel extends User{
+    
     private $nom;
     private $prenom;
     

@@ -17,6 +17,7 @@ class Connection {
         
     }
 
+    
     private static function _get() {
         $dsn = 'mysql:dbname=jcue;host=127.0.0.1';
         $user = 'root';
