@@ -35,4 +35,27 @@ class offreDAO {
             $offre[] = new Offre($offre[0], $offre[1], $offre[2], $offre[3], $offre[4], $offre[5], $offre[6]);
         }
     }
+    public function addOffre($offre){
+        $query = 'INSERT INTO offre (id, libelle, duree, descriptionMission, dateDebut, id_utilisateur, id_typeContrat) '
+                . 'VALUES ("'.$offre->getLibelle().'", "'.$offre->getDuree().'", "'.$offre->getDescriptionMission().'", '
+                . '"'.$offre->getDateDebut().'", "'.$offre->getId_utilisateur().'", '.$offre->getId_typeContrat().')';
+        $result = Connection::exec($query);
+        return $result;
+    }
+    
+    public function updateOffre($offre){
+        $query = 'UPDATE offre '
+                . 'SET lieu = "'.$offre->getLibelle().'", duree = "'.$offre->getDuree().'", descriptionMission = "'.$offre->getDescriptionMission().'", '
+                . 'dateDebut = "'.$offre->getDateDebut().'", id_utilisateur = "'.$offre->getId_utilisateur().'", id_typeContrat = "'.$offre->getId_typeContrat().'" '
+                . 'WHERE id = '.$offre->getId();
+        $result = Connection::exec($query);
+        return $result;
+    }
+    
+    public function deleteOffre($offre){
+        $query = 'DELETE FROM offre '
+                . 'WHERE id = '.$offre->getId();
+        $result = Connection::exec($query);
+        return $result;
+    }
 }

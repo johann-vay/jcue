@@ -44,7 +44,7 @@ class formationDAO {
         return $result;
     }
     
-    public function updateExeperiencePro($formation){
+    public function updateFormation($formation){
         $query = 'UPDATE formation '
                 . 'SET intitule = "'.$formation->getIntitule().'", anneeDebut = "'.$formation->getAnneeDebut().'", anneeFin = "'.$formation->getAnneeDebut().'", '
                 . 'nomEtablissement = "'.$formation->getNomEtablissement().'", villeEtablissement = "'.$formation->getVilleEtablissement().'", diplomeVise = "'.$formation->getDiplomeVise().'", diplomeObtenu = "'.$formation->getDiplomeObtenu().'", id_cv = "'.$formation->getId_cv().'" '
@@ -53,7 +53,7 @@ class formationDAO {
         return $result;
     }
     
-    public function deleteCV($formation){
+    public function deleteFormation($formation){
         $query = 'DELETE FROM formation '
                 . 'WHERE id = '.$formation->getId();
         $result = Connection::exec($query);

@@ -34,4 +34,26 @@ class messageDAO {
             $message[] = new Message($message[0], $message[1], $message[2], $message[3]);
         }
     }
+    
+    public function addMessage($message){
+        $query = 'INSERT INTO message (id, contenu, id_expediteur, id_destinataire) '
+                . 'VALUES ("'.$message->getContenu().'", "'.$message->getId_Expediteur().'", "'.$message->getId_Destinataire().'")';
+        $result = Connection::exec($query);
+        return $result;
+    }
+    
+    public function updateMessage($message){
+        $query = 'UPDATE message '
+                . 'SET contenu = "'.$message->getContenu().'", id_expediteur = "'.$message->getId_Expediteur().'", id_destinataire = "'.$message->getId_Destinataire().'" '
+                . 'WHERE id = '.$message->getId();
+        $result = Connection::exec($query);
+        return $result;
+    }
+    
+    public function deleteMessage($message){
+        $query = 'DELETE FROM message '
+                . 'WHERE id = '.$message->getId();
+        $result = Connection::exec($query);
+        return $result;
+    }
 }
