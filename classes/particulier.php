@@ -2,7 +2,7 @@
 
 class Particulier extends User{
     
-    private $id;
+    //private $id;
     private $nom;
     private $prenom;
     private $urlVideo;
@@ -10,7 +10,7 @@ class Particulier extends User{
      
     function __construct($id, $nom, $prenom, $urlVideo, $id_cv, $adresse, $codePostal, $ville, $mail, $telephone, $login, $password, $type) {
         parent::__construct($id, $adresse, $codePostal, $ville, $mail, $telephone, $login, $password, $type);
-        $this->id =  $id;
+        //$this->id =  $id;
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->urlVideo = $urlVideo;
