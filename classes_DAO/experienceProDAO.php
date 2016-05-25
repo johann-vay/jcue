@@ -18,7 +18,7 @@ class experienceProDAO {
     }
     
     public function experienceProList(){
-        $query = 'SELECT  id, lieu, dateDebut, duree, posteOccupe, descriptionMission, id_cv '
+        $query = 'SELECT  id, lieu, dateDebut, duree, posteOccupe, descriptionMission, id_experiencePro '
                 . 'FROM experiencepro';
         $arrayExperiencePros = Connection::query($query);
         foreach ($arrayExperiencePros as $experiencePro) {
@@ -28,7 +28,7 @@ class experienceProDAO {
     }
     
     public function experienceProDetails($experiencePro){
-        $query = 'SELECT  id, lieu, dateDebut, duree, posteOccupe, descriptionMission, id_cv '
+        $query = 'SELECT  id, lieu, dateDebut, duree, posteOccupe, descriptionMission, id_experiencePro '
                 . 'FROM experiencepro '
                 . 'WHERE id = '.$experiencePro;
         $arrayDetails = Connection::query($query);
@@ -37,26 +37,26 @@ class experienceProDAO {
         }
     }
     
-    public function addCV($cv){
-        $query = 'INSERT INTO cv (titre, langueParlee, langueEcrite, centreInterets, competences, id_utilisateur) '
-                . 'VALUES ("'.$cv->getTitre().'", "'.$cv->getLangueParlee().'", "'.$cv->getLangueEcrite().'", '
-                . '"'.$cv->getCentreInterets().'", "'.$cv->getCompetences().'", '.$cv->getId_utilisateur().')';
+    public function addExperiencePro($experiencePro){
+        $query = 'INSERT INTO experiencepro (id, lieu, dateDebut, duree, posteOccupe, descriptionMission, id_experiencePro) '
+                . 'VALUES ("'.$experiencePro->getLieu().'", "'.$experiencePro->getDateDebut().'", "'.$experiencePro->getDuree().'", '
+                . '"'.$experiencePro->getPosteOccupe().'", "'.$experiencePro->getDescriptionMission().'", '.$experiencePro->getId_experiencePro().')';
         $result = Connection::exec($query);
         return $result;
     }
     
-    public function updateCV($cv){
-        $query = 'UPDATE cv '
-                . 'SET titre = "'.$cv->getTitre().'", langueParlee = "'.$cv->getLangueParlee().'", langueEcrite = "'.$cv->getLangueEcrite().'", '
-                . 'centreInterets = "'.$cv->getCentreInterets().'", competences = "'.$cv->getCompetences().'" '
-                . 'WHERE id = '.$cv->getId();
+    public function updateExeperiencePro($experiencePro){
+        $query = 'UPDATE experiencepro '
+                . 'SET lieu = "'.$experiencePro->getLieu().'", dateDebut = "'.$experiencePro->getDateDebut().'", duree = "'.$experiencePro->getDuree().'", '
+                . 'posteOccupe = "'.$experiencePro->getPosteOccupe().'", descriptionMission = "'.$experiencePro->getDescriptionMission().'", id_experiencePro = "'.$experiencePro->getId_experiencePro().'" '
+                . 'WHERE id = '.$experiencePro->getId();
         $result = Connection::exec($query);
         return $result;
     }
     
-    public function deleteCV($cv){
-        $query = 'DELETE FROM cv '
-                . 'WHERE id = '.$cv->getId();
+    public function deleteCV($experiencePro){
+        $query = 'DELETE FROM experiencePro '
+                . 'WHERE id = '.$experiencePro->getId();
         $result = Connection::exec($query);
         return $result;
     }
