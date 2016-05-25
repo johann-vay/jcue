@@ -10,7 +10,7 @@ class Offre {
     private $id_utilisateur;
     private $id_typeContrat;
     
-    function __construct($id, $libelle, $duree, $descriptionMission, $dateDebut, $id_utilisateur, $id_typeContrat) {
+    function __construct($libelle, $duree, $descriptionMission, $dateDebut, $id_utilisateur, $id_typeContrat, $id = null) {
         $this->id = $id;
         $this->libelle = $libelle;
         $this->duree = $duree;

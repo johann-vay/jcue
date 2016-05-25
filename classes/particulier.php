@@ -1,16 +1,13 @@
 <?php
 
 class Particulier extends User{
-    
-    //private $id;
     private $nom;
     private $prenom;
     private $urlVideo;
     private $id_cv;
      
-    function __construct($id, $nom, $prenom, $urlVideo, $id_cv, $adresse, $codePostal, $ville, $mail, $telephone, $login, $password, $type) {
+    function __construct( $nom, $prenom, $urlVideo, $id_cv, $adresse, $codePostal, $ville, $mail, $telephone, $login, $password, $type, $id = null) {
         parent::__construct($id, $adresse, $codePostal, $ville, $mail, $telephone, $login, $password, $type);
-        //$this->id =  $id;
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->urlVideo = $urlVideo;

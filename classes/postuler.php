@@ -5,7 +5,7 @@ class Postuler {
     private $id;
     private $id_offre;
     
-    function __construct($id, $id_offre) {
+    function __construct($id_offre, $id = null) {
         $this->id = $id;
         $this->id_offre = $id_offre;
     }

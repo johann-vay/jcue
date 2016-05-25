@@ -12,7 +12,7 @@ class Formation {
     private $diplomeObtenu;
     private $id_cv;
     
-    function __construct($id, $intitule, $anneeDebut, $anneeFin, $nomEtablissement, $villeEtablissement, $diplomeVise, $diplomeObtenu, $id_cv) {
+    function __construct( $intitule, $anneeDebut, $anneeFin, $nomEtablissement, $villeEtablissement, $diplomeVise, $diplomeObtenu, $id_cv, $id = null) {
         $this->id = $id;
         $this->intitule = $intitule;
         $this->anneeDebut = $anneeDebut;

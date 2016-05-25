@@ -4,12 +4,14 @@ class Message {
      
     private $id;
     private $contenu;
-    private $id_utilisateur;
+    private $id_expediteur;
+    private $id_destinataire;
     
-    function __construct($id, $contenu, $id_utilisateur) {
+    function __construct($contenu, $id_expediteur, $id_destinataire, $id = null) {
         $this->id = $id;
         $this->contenu = $contenu;
-        $this->id_utilisateur = $id_utilisateur;
+        $this->id_expediteur = $id_expediteur;
+        $this->id_destinataire = $id_destinataire;
     }
     
     function getId() {
@@ -20,8 +22,11 @@ class Message {
         return $this->contenu;
     }
 
-    function getId_utilisateur() {
-        return $this->id_utilisateur;
+    function getId_destinataire() {
+        return $this->id_destinataire;
+    }
+    function getId_expediteur() {
+        return $this->id_expediteur;
     }
 
     function setId($id) {
@@ -32,9 +37,15 @@ class Message {
         $this->contenu = $contenu;
     }
 
-    function setId_utilisateur($id_utilisateur) {
-        $this->id_utilisateur = $id_utilisateur;
+    function setId_expediteur($id_expediteur) {
+        $this->id_expediteur = $id_expediteur;
     }
+    
+    function setId_destinataire($id_destinataire) {
+        $this->id_destinataire = $id_destinataire;
+    }
+
+
 
 
 
