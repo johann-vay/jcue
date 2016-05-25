@@ -35,4 +35,26 @@ class entrepriseDAO {
             $entreprise[] = new Entreprise($entreprise[0], $entreprise[1], $entreprise[2]);
         }
     }
+    
+    public function addEntreprise(Entreprise $entreprise){
+        $query = 'INSERT INTO entreprise (raisonSociale, numeroSiret) '
+                . 'VALUES ("'.$entreprise->getRaisonSociale().'", "'.$entreprise->getNumeroSiret().')';
+        $result = Connection::exec($query);
+        return $result;
+    }
+    
+    public function updateEntreprise(Entreprise $entreprise){
+        $query = 'UPDATE entreprise '
+                . 'SET raisonSociale = "'.$entreprise->getRaisonSociale.'", numeroSiret = "'.$entreprise->getNumeroSiret().'" '
+                . 'WHERE id = '.$entreprise->getId();
+        $result = Connection::exec($query);
+        return $result;
+    }
+    
+    public function deleteEntreprise(Entreprise $entreprise){
+        $query = 'DELETE FROM entreprise '
+                . 'WHERE id = '.$entreprise->getId();
+        $result = Connection::exec($query);
+        return $result;
+    }
 }

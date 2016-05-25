@@ -37,4 +37,28 @@ class experienceProDAO {
         }
     }
     
+    public function addCV($cv){
+        $query = 'INSERT INTO cv (titre, langueParlee, langueEcrite, centreInterets, competences, id_utilisateur) '
+                . 'VALUES ("'.$cv->getTitre().'", "'.$cv->getLangueParlee().'", "'.$cv->getLangueEcrite().'", '
+                . '"'.$cv->getCentreInterets().'", "'.$cv->getCompetences().'", '.$cv->getId_utilisateur().')';
+        $result = Connection::exec($query);
+        return $result;
+    }
+    
+    public function updateCV($cv){
+        $query = 'UPDATE cv '
+                . 'SET titre = "'.$cv->getTitre().'", langueParlee = "'.$cv->getLangueParlee().'", langueEcrite = "'.$cv->getLangueEcrite().'", '
+                . 'centreInterets = "'.$cv->getCentreInterets().'", competences = "'.$cv->getCompetences().'" '
+                . 'WHERE id = '.$cv->getId();
+        $result = Connection::exec($query);
+        return $result;
+    }
+    
+    public function deleteCV($cv){
+        $query = 'DELETE FROM cv '
+                . 'WHERE id = '.$cv->getId();
+        $result = Connection::exec($query);
+        return $result;
+    }
+    
 }
