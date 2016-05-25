@@ -13,4 +13,26 @@
  */
 class postulerDAO {
     //put your code here
+    function __construct() {
+    }
+    
+    public function postulerList(){
+        $query = 'SELECT  id, id_offre'
+                . 'FROM postuler';
+        $arrayPostulers = Connection::query($query);
+        foreach ($arrayPostulers as $postuler) {
+            $postulers[] = new Postuler($postuler[0], $postuler[1]);
+        }
+        return $postulers;
+    }
+    
+    public function postulerDetails($postuler){
+        $query = 'SELECT  id, id_offre'
+                . 'FROM postuler '
+                . 'WHERE id = '.$postuler;
+        $arrayDetails = Connection::query($query);
+        foreach ($arrayDetails as $postuler) {
+            $postuler[] = new Postuler($postuler[0], $postuler[1]);
+        }
+    }
 }
