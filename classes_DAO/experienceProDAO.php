@@ -27,7 +27,7 @@ class experienceProDAO {
         return $experiencePros;
     }
     
-    public function entrepriseDetails($experiencePro){
+    public function experienceProDetails($experiencePro){
         $query = 'SELECT  id, lieu, dateDebut, duree, posteOccupe, descriptionMission, id_cv '
                 . 'FROM experiencepro '
                 . 'WHERE id = '.$experiencePro;

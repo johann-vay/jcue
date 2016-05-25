@@ -13,4 +13,27 @@
  */
 class formationDAO {
     //put your code here
+    
+    function __construct() {
+    }
+    
+    public function formationList(){
+        $query = 'SELECT  id, intitule, anneeDebut, anneeFin, nomEtablissement, villeEtablissement, displomeVise, diplomeObtenu, id_cv'
+                . 'FROM formation';
+        $arrayFormations = Connection::query($query);
+        foreach ($arrayFormations as $formation) {
+            $formations[] = new Formation($formation[0], $formation[1], $formation[2], $formation[3], $formation[4], $formation[5], $formation[6], $formation[7], $formation[8]);
+        }
+        return $formations;
+    }
+    
+    public function formationDetails($formation){
+        $query = 'SELECT  id, intitule, anneeDebut, anneeFin, nomEtablissement, villeEtablissement, displomeVise, diplomeObtenu, id_cv'
+                . 'FROM formation '
+                . 'WHERE id = '.$formation;
+        $arrayDetails = Connection::query($query);
+        foreach ($arrayDetails as $formation) {
+            $formation[] = new Formation($formation[0], $formation[1], $formation[2], $formation[3], $formation[4], $formation[5], $formation[6], $formation[7], $formation[8]);
+        }
+    }
 }
