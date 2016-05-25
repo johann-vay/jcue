@@ -5,7 +5,7 @@ class TypeContrat {
     private $id;
     private $libelle;
     
-    function __construct($id, $libelle) {
+    function __construct($libelle, $id = null) {
         $this->id = $id;
         $this->libelle = $libelle;
     }

@@ -10,7 +10,7 @@ class Cv {
     private $competences;
     private $id_utilisateur;
     
-    function __construct($id, $titre, $langueParlee, $langueEcrite, $centreInterets, $competences, $id_utilisateur) {
+    function __construct($titre, $langueParlee, $langueEcrite, $centreInterets, $competences, $id_utilisateur, $id = null) {
         $this->id = $id;
         $this->titre = $titre;
         $this->langueParlee = $langueParlee;

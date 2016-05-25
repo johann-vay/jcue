@@ -1,13 +1,11 @@
 <?php
 
 class Personnel extends User{
-    private $id;
     private $nom;
     private $prenom;
     
-    function __construct($id, $nom, $prenom, $adresse, $codePostal, $ville, $mail, $telephone, $login, $password, $type) {
+    function __construct($nom, $prenom, $adresse, $codePostal, $ville, $mail, $telephone, $login, $password, $type, $id = null) {
         parent::__construct($id, $adresse, $codePostal, $ville, $mail, $telephone, $login, $password, $type);
-        $this->id = $id;
         $this->nom = $nom;
         $this->prenom = $prenom;
     }

@@ -11,7 +11,7 @@ class ExperiencePro {
     private $descriptionMission;
     private $id_cv;
     
-    function __construct($id, $lieu, $dateDebut, $dateFin, $duree, $posteOccupe, $descriptionMission, $id_cv) {
+    function __construct($lieu, $dateDebut, $dateFin, $duree, $posteOccupe, $descriptionMission, $id_cv, $id = null) {
         $this->id = $id;
         $this->lieu = $lieu;
         $this->dateDebut = $dateDebut;

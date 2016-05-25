@@ -6,7 +6,7 @@ class Entreprise {
     private $raisonSociale;
     private $numeroSiret;
 
-    function __construct($id, $raisonSociale, $numeroSiret) {
+    function __construct($raisonSociale, $numeroSiret, $id = null) {
         $this->id = $id;
         $this->raisonSociale = $raisonSociale;
         $this->numeroSiret = $numeroSiret;
