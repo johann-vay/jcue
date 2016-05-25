@@ -35,4 +35,26 @@ class personnelDAO {
             $personnel[] = new Personnel($personnel[0], $personnel[1], $personnel[2]);
         }
     }
+    
+    public function addPersonnel($personnel){
+        $query = 'INSERT INTO personnel (nom, prenom) '
+                . 'VALUES ("'.$personnel->getLNom().'", "'.$personnel->getPrenom().'")';
+        $result = Connection::exec($query);
+        return $result;
+    }
+    
+    public function updatePersonnel($personnel){
+        $query = 'UPDATE personnel '
+                . 'SET nom = "'.$personnel->getNom().'", prenom = "'.$personnel->getPrenom()
+                . 'WHERE id = '.$personnel->getId();
+        $result = Connection::exec($query);
+        return $result;
+    }
+    
+    public function deletePersonnel($personnel){
+        $query = 'DELETE FROM personnel '
+                . 'WHERE id = '.$personnel->getId();
+        $result = Connection::exec($query);
+        return $result;
+    }
 }

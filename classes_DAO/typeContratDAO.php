@@ -35,4 +35,26 @@ class typeContratDAO {
             $typeContrat[] = new TypeContrat($typeContrat[0], $typeContrat[1]);
         }
     }
+    
+     public function addTypeContrat($typeContrat){
+        $query = 'INSERT INTO typecontrat (libelle) '
+                . 'VALUES ("'.$typeContrat->getLibelle().'")';
+        $result = Connection::exec($query);
+        return $result;
+    }
+    
+    public function updateTypeContrat($typeContrat){
+        $query = 'UPDATE typecontrat '
+                . 'SET libelle = "'.$typeContrat->getLibelle().'" '
+                . 'WHERE id = '.$typeContrat->getId();
+        $result = Connection::exec($query);
+        return $result;
+    }
+    
+    public function deleteTypeContrat($typeContrat){
+        $query = 'DELETE FROM typecontrat '
+                . 'WHERE id = '.$typeContrat->getId();
+        $result = Connection::exec($query);
+        return $result;
+    }
 }

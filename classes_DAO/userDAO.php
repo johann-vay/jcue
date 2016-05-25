@@ -37,5 +37,30 @@ class UserDAO {
         
         return $user;
     }
+    
+    public function addUser($user){
+        $query = 'INSERT INTO utilisateur (adresse, codePostal, ville, mail, telephone, login, password, type) '
+                . 'VALUES ("'.$user->getAdresse().'", "'.$user->getCodePostal().'", "'.$user->getVille().'", '
+                . '"'.$user->getMail().'", "'.$user->getTelephone().'", "'.$user->getLogin().'", "'.$user->getPassword().'", "'.$user->getType().'")';
+        $result = Connection::exec($query);
+        return $result;
+    }
+    
+    public function updateUser($user){
+        $query = 'UPDATE utilisateur '
+                . 'SET adresse = "'.$user->getAdresse().'", codePostal = "'.$user->getCodePostal().'", ville = "'.$user->getVille().'", '
+                . 'mail = "'.$user->getMail().'", telephone = "'.$user->getTelephone().'", login = "'.$user->getLogin().'", password = "'.$user->getPassword().'", '
+                . 'type = "'.$user->getType().'" '
+                . 'WHERE id = '.$user->getId();
+        $result = Connection::exec($query);
+        return $result;
+    }
+    
+    public function deleteUser($user){
+        $query = 'DELETE FROM utilisateur '
+                . 'WHERE id = '.$user->getId();
+        $result = Connection::exec($query);
+        return $result;
+    }
 
 }
