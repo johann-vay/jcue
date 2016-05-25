@@ -35,4 +35,26 @@ class particulierDAO {
             $particulier[] = new Particulier($particulier[0], $particulier[1], $particulier[2]);
         }
     }
+    
+    public function addParticulier($particulier){
+        $query = 'INSERT INTO particulier (id, nom, prenom) '
+                . 'VALUES ("'.$particulier->getNom().'", "'.$particulier->getPrenom().'")';
+        $result = Connection::exec($query);
+        return $result;
+    }
+    
+    public function updateParticulier($particulier){
+        $query = 'UPDATE particulier '
+                . 'SET nom = "'.$particulier->getNom().'", prenom = "'.$particulier->getPrenom().'" '
+                . 'WHERE id = '.$particulier->getId();
+        $result = Connection::exec($query);
+        return $result;
+    }
+    
+    public function deleteParticulier($particulier){
+        $query = 'DELETE FROM particulier '
+                . 'WHERE id = '.$particulier->getId();
+        $result = Connection::exec($query);
+        return $result;
+    }
 }

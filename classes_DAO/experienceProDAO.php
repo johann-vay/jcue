@@ -45,7 +45,7 @@ class experienceProDAO {
         return $result;
     }
     
-    public function updateExeperiencePro($experiencePro){
+    public function updateExperiencePro($experiencePro){
         $query = 'UPDATE experiencepro '
                 . 'SET lieu = "'.$experiencePro->getLieu().'", dateDebut = "'.$experiencePro->getDateDebut().'", duree = "'.$experiencePro->getDuree().'", '
                 . 'posteOccupe = "'.$experiencePro->getPosteOccupe().'", descriptionMission = "'.$experiencePro->getDescriptionMission().'", id_experiencePro = "'.$experiencePro->getId_experiencePro().'" '
@@ -54,7 +54,7 @@ class experienceProDAO {
         return $result;
     }
     
-    public function deleteCV($experiencePro){
+    public function deleteExperiencePro($experiencePro){
         $query = 'DELETE FROM experiencePro '
                 . 'WHERE id = '.$experiencePro->getId();
         $result = Connection::exec($query);
