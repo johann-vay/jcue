@@ -16,13 +16,3 @@ function formulaireUser($user) {
             . '</form>';
     return $html;
 }
-
-function formulairePassword($userId) {
-    $html = '<form action=".?page=perso&userId='.$userId.'" method="POST" class="form-horizontal pull-left col-sm-6">'
-            . champTexte('Mot de passe actuel', 'oldPassword',"",'password')
-            . champTexte('Nouveau mot de passe', 'newPassword', "", 'password')
-            . champTexte('Confirmer le nouveau mot de passe', 'confirmNewPassword', "", 'password')
-            . btnSubmit('validerNewPassword')
-            . '</form>';
-    return $html;
-}
