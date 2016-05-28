@@ -1,4 +1,5 @@
 <?php
+require_once '../required.php';
 
 class Particulier extends User{
     private $nom;
