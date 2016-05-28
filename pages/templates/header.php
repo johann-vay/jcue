@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>SEP</title>
+        <title>JCUE</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.5 -->
@@ -39,10 +39,10 @@
                 <div class="navbar-header">
                     <a href="." class="logo">
                         <span class="logo-mini"><!-- LOGO -->
-                            SEP
+                            JCUE
                         </span>
                         <span class="logo-lg"><!-- LOGO -->
-                            SEP
+                            JCUE
                         </span>
                     </a>
                 </div>
@@ -60,21 +60,18 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['login'].' '; ?><span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li class="user-header">
-                                        <img src="css/privilege.png" class="img-bordered" alt="User Image">
                                         <p>
                                             <?php
-                                                $rq = 'SELECT libelle from typeutilisateur WHERE id = '.$_SESSION['idTypeUser'];
-                                                $result = Connexion::query($rq);
-                                                $type = $result[0][0];
-                                                echo $_SESSION['prenom'].' '.$_SESSION['nom'].' - '.$type; 
+                                            $userDAO = new UserDAO();
+                                            $user = $userDAO->userDetails($_SESSION['idUser']);
+                                            echo $user->getLogin(); 
                                             ?>
                                         </p>
                                     </li>
                                     <?php 
-                                    $idUser = $_SESSION['idUser'];
                                     echo '<li class="user-footer">'
                                             . '<div class="pull-left">'
-                                                . '<a href=".?page=perso&userId='.$idUser.'" class="btn btn-default btn-flat">Profil</a>'
+                                                . '<a href=".?page=perso&userId='.$_SESSION['idUser'].'" class="btn btn-default btn-flat">Profil</a>'
                                             . '</div>'
                                             . '<div class="pull-right">'
                                                 . '<a href=".?page=deconnexion" class="btn btn-default btn-flat">Déconnexion</a>'

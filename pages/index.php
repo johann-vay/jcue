@@ -19,15 +19,20 @@ include('../pages/templates/menu.php');
         <div class="row">
             <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                 <div class="info-box">
-                    <a href=".?page=listeFiches"><span class="info-box-icon bg-aqua"><i class="fa fa-file-text"></i></span></a>
+                    <a href=""><span class="info-box-icon bg-aqua"><i class="fa fa-file-text"></i></span></a>
                     <div class="info-box-content">
-                        <span class="info-box-text">Fiches</span>
-                        <span class="info-box-number"><?php echo nbFiches(); ?></span>
+                        <span class="info-box-text"><strong>Utilisateurs</strong></span>
+                        <span class="info-box-number">
+                            <?php 
+                            $userDAO = new UserDAO();
+                            echo $userDAO->nbUsers();
+                            ?>
+                        </span>
                     </div><!-- /.info-box-content -->
                 </div><!-- /.info-box -->
             </div><!-- /.col -->
             <?php
-            
+            /*
             if ($_SESSION['idTypeUser'] == 1){
                 echo '<div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                         <div class="info-box">
@@ -69,7 +74,7 @@ include('../pages/templates/menu.php');
             </div><!-- /.row -->';
             } else {
                 echo '</div><!-- /.row -->';
-            }
+            }*/
             ?>
 
     </section>
