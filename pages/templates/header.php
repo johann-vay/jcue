@@ -64,7 +64,12 @@
                                             <?php
                                             $userDAO = new UserDAO();
                                             $user = $userDAO->userDetails($_SESSION['idUser']);
-                                                echo $user->getLogin(); 
+                                            $userType = $user->getType();
+                                            /*if ($userType == 'Particulier'){
+                                                $particulierDAO = new particulierDAO();
+                                                $particulier = $particulierDAO->particulierDetails($_SESSION['idUser']);
+                                                echo $particulier->getNom().' '.$particulier->getPrenom().' - '.$user->getType();
+                                            }*/
                                             ?>
                                         </p>
                                     </li>

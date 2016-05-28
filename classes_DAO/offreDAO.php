@@ -17,7 +17,7 @@ class offreDAO {
     }
     
     public function offreList(){
-        $query = 'SELECT  id, libelle, duree, descriptionMission, dateDebut, id_utilisateur, id_typeContrat'
+        $query = 'SELECT  id, libelle, duree, descriptionMission, dateDebut, id_utilisateur, id_typeContrat '
                 . 'FROM offre';
         $arrayOffres = Connection::query($query);
         foreach ($arrayOffres as $offre) {
@@ -27,7 +27,7 @@ class offreDAO {
     }
     
     public function offreDetails($offre){
-        $query = 'SELECT  id, libelle, duree, descriptionMission, dateDebut, id_utilisateur, id_typeContrat'
+        $query = 'SELECT  id, libelle, duree, descriptionMission, dateDebut, id_utilisateur, id_typeContrat '
                 . 'FROM offre '
                 . 'WHERE id = '.$offre;
         $arrayDetails = Connection::query($query);

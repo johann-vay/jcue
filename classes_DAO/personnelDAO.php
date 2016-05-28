@@ -17,7 +17,7 @@ class personnelDAO {
     }
     
     public function personnelList(){
-        $query = 'SELECT  id, nom, prenom'
+        $query = 'SELECT  id, nom, prenom '
                 . 'FROM personnel';
         $arrayPersonnels = Connection::query($query);
         foreach ($arrayPersonnels as $personnel) {
@@ -27,7 +27,7 @@ class personnelDAO {
     }
     
     public function personnelDetails($personnel){
-        $query = 'SELECT  id, nom, prenom'
+        $query = 'SELECT  id, nom, prenom '
                 . 'FROM personnel '
                 . 'WHERE id = '.$personnel;
         $arrayDetails = Connection::query($query);

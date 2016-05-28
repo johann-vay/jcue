@@ -17,7 +17,7 @@ class postulerDAO {
     }
     
     public function postulerList(){
-        $query = 'SELECT  id, id_offre'
+        $query = 'SELECT  id, id_offre '
                 . 'FROM postuler';
         $arrayPostulers = Connection::query($query);
         foreach ($arrayPostulers as $postuler) {
@@ -27,7 +27,7 @@ class postulerDAO {
     }
     
     public function postulerDetails($postuler){
-        $query = 'SELECT  id, id_offre'
+        $query = 'SELECT  id, id_offre '
                 . 'FROM postuler '
                 . 'WHERE id = '.$postuler;
         $arrayDetails = Connection::query($query);

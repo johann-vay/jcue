@@ -26,10 +26,10 @@ class particulierDAO {
         return $particuliers;
     }
     
-    public function particulierDetails($particulier){
-        $query = 'SELECT  id, nom, prenom'
+    public function particulierDetails($idParticulier){
+        $query = 'SELECT  id, nom, prenom '
                 . 'FROM particulier '
-                . 'WHERE id = '.$particulier;
+                . 'WHERE id = '.$idParticulier;
         $arrayDetails = Connection::query($query);
         foreach ($arrayDetails as $particulier) {
             $particulier[] = new Particulier($particulier[0], $particulier[1], $particulier[2]);

@@ -16,7 +16,7 @@ class messageDAO {
     }
     
     public function messageList(){
-        $query = 'SELECT  id, contenu, id_expediteur, id_destinataire'
+        $query = 'SELECT  id, contenu, id_expediteur, id_destinataire '
                 . 'FROM message';
         $arrayMessages = Connection::query($query);
         foreach ($arrayMessages as $message) {
@@ -26,7 +26,7 @@ class messageDAO {
     }
     
     public function messageDetails($message){
-        $query = 'SELECT  id, contenu, id_expediteur, id_destinataire'
+        $query = 'SELECT  id, contenu, id_expediteur, id_destinataire '
                 . 'FROM message '
                 . 'WHERE id = '.$message;
         $arrayDetails = Connection::query($query);

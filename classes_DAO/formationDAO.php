@@ -18,7 +18,7 @@ class formationDAO {
     }
     
     public function formationList(){
-        $query = 'SELECT  id, intitule, anneeDebut, anneeFin, nomEtablissement, villeEtablissement, diplomeVise, diplomeObtenu, id_cv'
+        $query = 'SELECT  id, intitule, anneeDebut, anneeFin, nomEtablissement, villeEtablissement, diplomeVise, diplomeObtenu, id_cv '
                 . 'FROM formation';
         $arrayFormations = Connection::query($query);
         foreach ($arrayFormations as $formation) {
@@ -28,7 +28,7 @@ class formationDAO {
     }
     
     public function formationDetails($formation){
-        $query = 'SELECT  id, intitule, anneeDebut, anneeFin, nomEtablissement, villeEtablissement, diplomeVise, diplomeObtenu, id_cv'
+        $query = 'SELECT  id, intitule, anneeDebut, anneeFin, nomEtablissement, villeEtablissement, diplomeVise, diplomeObtenu, id_cv '
                 . 'FROM formation '
                 . 'WHERE id = '.$formation;
         $arrayDetails = Connection::query($query);
