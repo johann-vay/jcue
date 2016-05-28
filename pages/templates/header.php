@@ -64,14 +64,14 @@
                                             <?php
                                             $userDAO = new UserDAO();
                                             $user = $userDAO->userDetails($_SESSION['idUser']);
-                                            echo $user->getLogin(); 
+                                                echo $user->getLogin(); 
                                             ?>
                                         </p>
                                     </li>
                                     <?php 
                                     echo '<li class="user-footer">'
                                             . '<div class="pull-left">'
-                                                . '<a href=".?page=perso&userId='.$_SESSION['idUser'].'" class="btn btn-default btn-flat">Profil</a>'
+                                                . '<a href="" class="btn btn-default btn-flat">Profil</a>'
                                             . '</div>'
                                             . '<div class="pull-right">'
                                                 . '<a href=".?page=deconnexion" class="btn btn-default btn-flat">Déconnexion</a>'
