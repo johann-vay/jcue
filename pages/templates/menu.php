@@ -6,9 +6,9 @@
         <ul class="sidebar-menu">
             <!-- Optionally, you can add icons to the links -->
             <li>
-                <a href="">
-                    <i class="fa fa-users"></i>
-                    <span>Utilisateurs</span>
+                <a href="./?page=listeOffres">
+                    <i class="fa fa-list"></i>
+                    <span>Offres</span>
                 </a>
             </li>
         </ul><!-- /.sidebar-menu -->
