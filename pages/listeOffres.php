@@ -24,6 +24,8 @@ include('../pages/templates/menu.php');
                             <div class="col-sm-12">
                                 <?php 
                                     $offreDAO = new offreDAO();
+                                    $typeContratDAO = new typeContratDAO();
+                                    $userDAO = new UserDAO();
                                     $listeOffres = $offreDAO->offreList();
                                     
                                     echo '<table class="table table-bordered table-hover dataTable">'
@@ -34,13 +36,18 @@ include('../pages/templates/menu.php');
                                             . '</thead>'
                                             . '<tbody>';
                                                 foreach ($listeOffres as $offre) {
+                                                    $idTypeContrat = $offre->getId_typeContrat();
+                                                    $typeContrat = $typeContratDAO->typeContratDetails($idTypeContrat);
+                                                    
+                                                    $idEmetteur = $offre->getId_utilisateur();
+                                                    $emetteur = $userDAO->userDetails($idEmetteur);
                                                     echo '<tr>'
                                                             .'<td>' . $offre->getId() . '</td>'
                                                             .'<td>' . $offre->getLibelle(). '</td>'
                                                             .'<td>' . $offre->getDuree() . '</td>'
                                                             .'<td>' . $offre->getDescriptionMission() . '</td>'
-                                                            .'<td>' . $offre->getId_utilisateur() . '</td>'
-                                                            .'<td>' . $offre->getId_typeContrat() . '</td>'
+                                                            .'<td>' . $emetteur->getLogin() . '</td>'
+                                                            .'<td>' . $typeContrat->getLibelle() . '</td>'
                                                         
                                                         .'</tr>';
                                                 }

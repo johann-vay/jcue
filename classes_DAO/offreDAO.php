@@ -20,9 +20,9 @@ class offreDAO {
         $query = 'SELECT  id, libelle, duree, descriptionMission, dateDebut, id_utilisateur, id_typeContrat '
                 . 'FROM offre';
         $arrayOffres = Connection::query($query);
-        $offres = [];
         foreach ($arrayOffres as $offre) {
-            $offres = new Offre($offre[0], $offre[1], $offre[2], $offre[3], $offre[4], $offre[5], $offre[6]);
+            $objetOffre = new Offre($offre[1], $offre[2], $offre[3], $offre[4], $offre[5], $offre[6], $offre[0]);
+            $offres[] = $objetOffre;
         }
         return $offres;
     }
