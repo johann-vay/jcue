@@ -5,18 +5,12 @@ class Particulier extends User{
     private $nom;
     private $prenom;
     private $urlVideo;
-    private $id_cv;
      
-    function __construct( $nom, $prenom, $urlVideo, $id_cv, $adresse, $codePostal, $ville, $mail, $telephone, $login, $password, $type, $id = null) {
+    function __construct( $nom, $prenom, $urlVideo, $adresse, $codePostal, $ville, $mail, $telephone, $login, $password, $type, $id = null) {
         parent::__construct($id, $adresse, $codePostal, $ville, $mail, $telephone, $login, $password, $type);
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->urlVideo = $urlVideo;
-        $this->id_cv = $id_cv;
-    }
-
-    function getId() {
-        return $this->id;
     }
 
     function getNom() { 
@@ -31,14 +25,6 @@ class Particulier extends User{
         return $this->urlVideo;
     }
 
-    function getId_cv() {
-        return $this->id_cv;
-    }
-
-    function setId($id) {
-        $this->id = $id;
-    }
-
     function setNom($nom) {
         $this->nom = $nom;
     }
@@ -50,11 +36,6 @@ class Particulier extends User{
     function setUrlVideo($urlVideo) {
         $this->urlVideo = $urlVideo;
     }
-
-    function setId_cv($id_cv) {
-        $this->id_cv = $id_cv;
-    }
-
 
     
 }
