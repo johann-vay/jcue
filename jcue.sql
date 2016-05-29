@@ -4,32 +4,6 @@
 
 
 #------------------------------------------------------------
-# Table: particulier
-#------------------------------------------------------------
-
-CREATE TABLE particulier(
-        nom      Varchar (25) NOT NULL ,
-        prenom   Varchar (25) NOT NULL ,
-        urlVideo Varchar (100) ,
-        id       Int NOT NULL ,
-        id_cv    Int NOT NULL ,
-        PRIMARY KEY (id )
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: entreprise
-#------------------------------------------------------------
-
-CREATE TABLE entreprise(
-        raisonSociale Varchar (50) NOT NULL ,
-        numeroSiret   Varchar (50) NOT NULL ,
-        id            Int NOT NULL ,
-        PRIMARY KEY (id )
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
 # Table: offre
 #------------------------------------------------------------
 
@@ -61,27 +35,21 @@ CREATE TABLE typeContrat(
 #------------------------------------------------------------
 
 CREATE TABLE utilisateur(
-        id         int (11) Auto_increment  NOT NULL ,
-        adresse    Varchar (50) NOT NULL ,
-        codePostal Char (5) NOT NULL ,
-        ville      Varchar (50) NOT NULL ,
-        mail       Varchar (50) NOT NULL ,
-        telephone  Char (10) NOT NULL ,
-        login      Varchar (50) NOT NULL ,
-        password   Varchar (100) NOT NULL ,
-        type       Varchar (25) NOT NULL ,
-        PRIMARY KEY (id )
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: personnel
-#------------------------------------------------------------
-
-CREATE TABLE personnel(
-        nom    Varchar (50) NOT NULL ,
-        prenom Varchar (50) NOT NULL ,
-        id     Int NOT NULL ,
+        id                 int (11) Auto_increment  NOT NULL ,
+        nom                Varchar (50) ,
+        prenom             Varchar (50) ,
+        adresse            Varchar (50) NOT NULL ,
+        codePostal         Char (5) NOT NULL ,
+        ville              Varchar (50) NOT NULL ,
+        mail               Varchar (50) NOT NULL ,
+        telephone          Char (10) NOT NULL ,
+        login              Varchar (50) NOT NULL ,
+        password           Varchar (100) NOT NULL ,
+        type               Varchar (25) NOT NULL ,
+        raisonSociale      Varchar (50) ,
+        numeroSIRET        Varchar (50) ,
+        id_cv              Int NOT NULL ,
+        id_typeutilisateur Int NOT NULL ,
         PRIMARY KEY (id )
 )ENGINE=InnoDB;
 
@@ -93,6 +61,7 @@ CREATE TABLE personnel(
 CREATE TABLE message(
         id               int (11) Auto_increment  NOT NULL ,
         contenu          Longtext NOT NULL ,
+        lu               Bool ,
         id_utilisateur   Int NOT NULL ,
         id_utilisateur_1 Int NOT NULL ,
         PRIMARY KEY (id )
@@ -126,6 +95,7 @@ CREATE TABLE cv(
         langueEcrite   Varchar (25) NOT NULL ,
         centreInterets Varchar (100) NOT NULL ,
         competences    Varchar (100) NOT NULL ,
+        urlVideo       Varchar (100) ,
         id_utilisateur Int NOT NULL ,
         PRIMARY KEY (id )
 )ENGINE=InnoDB;
@@ -150,25 +120,34 @@ CREATE TABLE formation(
 
 
 #------------------------------------------------------------
+# Table: typeutilisateur
+#------------------------------------------------------------
+
+CREATE TABLE typeutilisateur(
+        id      int (11) Auto_increment  NOT NULL ,
+        libelle Varchar (25) NOT NULL ,
+        PRIMARY KEY (id )
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
 # Table: postuler
 #------------------------------------------------------------
 
 CREATE TABLE postuler(
-        id       Int NOT NULL ,
-        id_offre Int NOT NULL ,
-        PRIMARY KEY (id ,id_offre )
+        id             Int NOT NULL ,
+        id_utilisateur Int NOT NULL ,
+        PRIMARY KEY (id ,id_utilisateur )
 )ENGINE=InnoDB;
 
-ALTER TABLE particulier ADD CONSTRAINT FK_particulier_id FOREIGN KEY (id) REFERENCES utilisateur(id);
-ALTER TABLE particulier ADD CONSTRAINT FK_particulier_id_cv FOREIGN KEY (id_cv) REFERENCES cv(id);
-ALTER TABLE entreprise ADD CONSTRAINT FK_entreprise_id FOREIGN KEY (id) REFERENCES utilisateur(id);
 ALTER TABLE offre ADD CONSTRAINT FK_offre_id_utilisateur FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id);
 ALTER TABLE offre ADD CONSTRAINT FK_offre_id_typeContrat FOREIGN KEY (id_typeContrat) REFERENCES typeContrat(id);
-ALTER TABLE personnel ADD CONSTRAINT FK_personnel_id FOREIGN KEY (id) REFERENCES utilisateur(id);
+ALTER TABLE utilisateur ADD CONSTRAINT FK_utilisateur_id_cv FOREIGN KEY (id_cv) REFERENCES cv(id);
+ALTER TABLE utilisateur ADD CONSTRAINT FK_utilisateur_id_typeutilisateur FOREIGN KEY (id_typeutilisateur) REFERENCES typeutilisateur(id);
 ALTER TABLE message ADD CONSTRAINT FK_message_id_utilisateur FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id);
 ALTER TABLE message ADD CONSTRAINT FK_message_id_utilisateur_1 FOREIGN KEY (id_utilisateur_1) REFERENCES utilisateur(id);
 ALTER TABLE experiencePro ADD CONSTRAINT FK_experiencePro_id_cv FOREIGN KEY (id_cv) REFERENCES cv(id);
 ALTER TABLE cv ADD CONSTRAINT FK_cv_id_utilisateur FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id);
 ALTER TABLE formation ADD CONSTRAINT FK_formation_id_cv FOREIGN KEY (id_cv) REFERENCES cv(id);
-ALTER TABLE postuler ADD CONSTRAINT FK_postuler_id FOREIGN KEY (id) REFERENCES utilisateur(id);
-ALTER TABLE postuler ADD CONSTRAINT FK_postuler_id_offre FOREIGN KEY (id_offre) REFERENCES offre(id);
+ALTER TABLE postuler ADD CONSTRAINT FK_postuler_id FOREIGN KEY (id) REFERENCES offre(id);
+ALTER TABLE postuler ADD CONSTRAINT FK_postuler_id_utilisateur FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id);
