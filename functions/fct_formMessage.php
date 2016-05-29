@@ -1,13 +1,22 @@
 <?php
 
+function formulaireAjoutMessage(){
+    $message = new Message(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+    return formulaireMessage($message);
+}
+
+function formulaireModificationMessage($idMessage){
+    $messageDAO = new messageDAO();
+    $message = $messageDAO->messageDetails($idMessage);
+    return formulaireMessage($message);
+}
+
 function formulaireMessage($message) {
 
     $html = '<form action=".?page=validationFormulaireMessage" method="POST" class="form-horizontal">
-            <input type="hidden" name="id" value="">'
-            . champTexte('Contenu', 'contenu')
-            . champSelectQuery('id_expediteur', 'id_utilisateur', 'SELECT `id`,`login` FROM utilisateur',$valeur=null)
-            . champSelectQuery('id_destinataire', 'id_utilisateur', 'SELECT `id`,`login` FROM utilisateur',$valeur=null)
-            . btnSubmit()
+            <input type="hidden" name="id" value="'.$message->getId().'">'
+            . champTexte('Contenu', 'contenu', $message->getContenu())
+            . btnSubmit('validerMessage')
             . '</form>';
     return $html;
 }
