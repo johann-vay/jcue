@@ -35,22 +35,25 @@ include('../pages/templates/menu.php');
                                                 . '</tr>'
                                             . '</thead>'
                                             . '<tbody>';
-                                                foreach ($listeOffres as $offre) {
-                                                    $idTypeContrat = $offre->getId_typeContrat();
-                                                    $typeContrat = $typeContratDAO->typeContratDetails($idTypeContrat);
-                                                    
-                                                    $idEmetteur = $offre->getId_utilisateur();
-                                                    $emetteur = $userDAO->userDetails($idEmetteur);
-                                                    echo '<tr>'
-                                                            .'<td>' . $offre->getId() . '</td>'
-                                                            .'<td>' . $offre->getLibelle(). '</td>'
-                                                            .'<td>' . $offre->getDuree() . '</td>'
-                                                            .'<td>' . $offre->getDescriptionMission() . '</td>'
-                                                            .'<td>' . $emetteur->getLogin() . '</td>'
-                                                            .'<td>' . $typeContrat->getLibelle() . '</td>'
-                                                        
-                                                        .'</tr>';
+                                                if (isset($listeOffres)){
+                                                   foreach ($listeOffres as $offre) {
+                                                        $idTypeContrat = $offre->getId_typeContrat();
+                                                        $typeContrat = $typeContratDAO->typeContratDetails($idTypeContrat);
+
+                                                        $idEmetteur = $offre->getId_utilisateur();
+                                                        $emetteur = $userDAO->userDetails($idEmetteur);
+                                                        echo '<tr>'
+                                                                .'<td>' . $offre->getId() . '</td>'
+                                                                .'<td>' . $offre->getLibelle(). '</td>'
+                                                                .'<td>' . $offre->getDuree() . '</td>'
+                                                                .'<td>' . $offre->getDescriptionMission() . '</td>'
+                                                                .'<td>' . $emetteur->getLogin() . '</td>'
+                                                                .'<td>' . $typeContrat->getLibelle() . '</td>'
+
+                                                            .'</tr>';
+                                                    } 
                                                 }
+                                                   
                                        echo '</tbody>'
                                       . '</table>';
                                 ?>
