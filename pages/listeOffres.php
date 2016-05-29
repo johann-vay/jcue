@@ -29,29 +29,23 @@ include('../pages/templates/menu.php');
                                     echo '<table class="table table-bordered table-hover dataTable">'
                                             . '<thead>'
                                                 . '<tr>'
-                                                    . '<th>Offre</th><th>Libelle</th><th>Duree</th><th>Description mission</th><th>Type Utilisateur</th>'
-                                                        . '<th></th><th></th>'
-                . '</tr>'
-            . '</thead>'
-            . '<tbody>';
-                foreach ($users as $user) {
-                    $html.= '<tr>';
-                        $html.='<td>' . lienUser($user[0]) . '</td>';
-                        $html.='<td>' . $user[1] . '</td>';
-                        $html.='<td>' . $user[2] . '</td>';
-                        $html.='<td>' . $user[3] . '</td>';
-                        $html.='<td>' . $user[4] . '</td>';
-                        if ($_SESSION['idTypeUser'] == 1 && $_SESSION['idUser'] != $user[0]){
-                            $html.='<td>' . lienFormulaireModificationUser($user[0]) . '</td>';
-                            $html.='<td>' . lienSuppressionUser($user[0]) . '</td>'.modalSuppressionUser($user[0]);
-                            }else {
-                                $html.='<td>' . lienFormulaireModificationUser($user[0]) . '</td>';
-                                $html .= '<td></td>';
-                        }
-                    $html.='</tr>';
-                }
-    $html.= '</tbody>'
-        . '</table>';
+                                                    . '<th>Offre</th><th>Libelle</th><th>Duree</th><th>Description mission</th><th>Emetteur</th><th>Type de contrat</th>'
+                                                . '</tr>'
+                                            . '</thead>'
+                                            . '<tbody>';
+                                                foreach ($listeOffres as $offre) {
+                                                    echo '<tr>'
+                                                            .'<td>' . $offre->getId() . '</td>'
+                                                            .'<td>' . $offre->getLibelle(). '</td>'
+                                                            .'<td>' . $offre->getDuree() . '</td>'
+                                                            .'<td>' . $offre->getDescriptionMission() . '</td>'
+                                                            .'<td>' . $offre->getId_utilisateur() . '</td>'
+                                                            .'<td>' . $offre->getId_typeContrat() . '</td>'
+                                                        
+                                                        .'</tr>';
+                                                }
+                                       echo '</tbody>'
+                                      . '</table>';
                                 ?>
                             </div>
 			</div>
