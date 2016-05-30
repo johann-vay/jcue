@@ -8,15 +8,17 @@ class Cv {
     private $langueEcrite;
     private $centreInterets;
     private $competences;
+    private $urlVideo;
     private $id_utilisateur;
     
-    function __construct($titre, $langueParlee, $langueEcrite, $centreInterets, $competences, $id_utilisateur, $id = null) {
+    function __construct($titre, $langueParlee, $langueEcrite, $centreInterets, $competences, $id_utilisateur, $id = null, $urlVideo = null) {
         $this->id = $id;
         $this->titre = $titre;
         $this->langueParlee = $langueParlee;
         $this->langueEcrite = $langueEcrite;
         $this->centreInterets = $centreInterets;
         $this->competences = $competences;
+        $this->urlVideo = $urlVideo;
         $this->id_utilisateur = $id_utilisateur;
     }
     
@@ -43,6 +45,10 @@ class Cv {
 
     function getCompetences() {
         return $this->competences;
+    }
+    
+    function getUrlVideo(){
+        return $this->urlVideo;
     }
 
     function getId_utilisateur() {
@@ -71,6 +77,10 @@ class Cv {
 
     function setCompetences($competences) {
         $this->competences = $competences;
+    }
+    
+    function setUrlVideo($urlVideo){
+        $this->urlVideo = $urlVideo;
     }
 
     function setId_utilisateur($id_utilisateur) {

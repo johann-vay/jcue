@@ -13,6 +13,8 @@
 class User {
     
     private $id;
+    private $nom;
+    private $prenom;
     private $adresse;
     private $codePostal;
     private $ville;
@@ -20,10 +22,12 @@ class User {
     private $telephone;
     private $login;
     private $password;
+    private $raisonSociale;
+    private $numeroSiret;
     private $type;
     
      
-    function __construct($id, $adresse, $codePostal, $ville, $mail, $telephone, $login, $password, $type) {
+    function __construct($adresse, $codePostal, $ville, $mail, $telephone, $login, $password, $type, $nom = null, $prenom = null, $raisonSociale = null, $numeroSiret = null, $id = null) {
         $this->id = $id;
         $this->adresse = $adresse;
         $this->codePostal = $codePostal;
@@ -33,6 +37,10 @@ class User {
         $this->login = $login;
         $this->password = $password;
         $this->type = $type;
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+        $this->raisonSociale = $raisonSociale;
+        $this->numeroSiret = $numeroSiret;
     }
     
     function getId() {
@@ -70,7 +78,39 @@ class User {
     function getType() {
         return $this->type;
     }
+    function getNom() {
+        return $this->nom;
+    }
 
+    function getPrenom() {
+        return $this->prenom;
+    }
+
+    function getRaisonSociale() {
+        return $this->raisonSociale;
+    }
+
+    function getNumeroSiret() {
+        return $this->numeroSiret;
+    }
+
+    function setNom($nom) {
+        $this->nom = $nom;
+    }
+
+    function setPrenom($prenom) {
+        $this->prenom = $prenom;
+    }
+
+    function setRaisonSociale($raisonSociale) {
+        $this->raisonSociale = $raisonSociale;
+    }
+
+    function setNumeroSiret($numeroSiret) {
+        $this->numeroSiret = $numeroSiret;
+    }
+
+    
     function setId($id) {
         $this->id = $id;
     }

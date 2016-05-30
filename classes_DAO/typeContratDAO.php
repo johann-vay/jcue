@@ -18,7 +18,7 @@ class typeContratDAO {
     
     public function typeContratList(){
         $query = 'SELECT  id, libelle '
-                . 'FROM typeContrat';
+                . 'FROM typecontrat';
         $arrayTypeContrats = Connection::query($query);
         foreach ($arrayTypeContrats as $typeContrat) {
             $typeContrats[] = new TypeContrat($typeContrat[1], $typeContrat[0]);
@@ -28,7 +28,7 @@ class typeContratDAO {
     
     public function typeContratDetails($idTypeContrat){
         $query = 'SELECT  id, libelle '
-                . 'FROM typeContrat '
+                . 'FROM typecontrat '
                 . 'WHERE id = '.$idTypeContrat;
         $arrayDetails = Connection::query($query);
         $typeContrat = new TypeContrat($arrayDetails[0][1], $arrayDetails[0][0]);

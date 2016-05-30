@@ -4,12 +4,14 @@ class Message {
      
     private $id;
     private $contenu;
+    private $lu;
     private $id_expediteur;
     private $id_destinataire;
     
-    function __construct($contenu, $id_expediteur, $id_destinataire, $id = null) {
+    function __construct($contenu, $id_expediteur, $id_destinataire, $lu, $id = null) {
         $this->id = $id;
         $this->contenu = $contenu;
+        $this->lu = $lu;
         $this->id_expediteur = $id_expediteur;
         $this->id_destinataire = $id_destinataire;
     }
@@ -21,8 +23,15 @@ class Message {
     function getContenu() {
         return $this->contenu;
     }
+    function getLu() {
+        return $this->lu;
+    }
 
-    function getId_destinataire() {
+    function setLu($lu) {
+        $this->lu = $lu;
+    }
+
+        function getId_destinataire() {
         return $this->id_destinataire;
     }
     function getId_expediteur() {
