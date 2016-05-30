@@ -74,9 +74,9 @@ class offreDAO {
         return $offre;
     }
     public function addOffre($offre){
-        $query = 'INSERT INTO offre (id, libelle, duree, descriptionMission, dateDebut, id_utilisateur, id_typeContrat) '
+        $query = 'INSERT INTO offre (libelle, duree, descriptionMission, dateDebut, id_utilisateur, id_typeContrat) '
                 . 'VALUES ("'.$offre->getLibelle().'", "'.$offre->getDuree().'", "'.$offre->getDescriptionMission().'", '
-                . '"'.$offre->getDateDebut().'", "'.$offre->getId_utilisateur().'", '.$offre->getId_typeContrat().')';
+                . '"'.$offre->getDateDebut().'", '.$offre->getId_utilisateur().', '.$offre->getId_typeContrat().')';
         $result = Connection::exec($query);
         return $result;
     }

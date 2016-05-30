@@ -109,13 +109,11 @@ function champSelect($label, $name, $liste, $value) {
                 <div class="col-sm-7 col-md-5 col-lg-8">
                     <select name="' . $name . '" class="form-control">';
                         foreach ($liste as $l) {
-                            $id = $l[0];
-                            unset($l[0]);
-                            $label = implode(' ', $l);
+                            $id = $l->getId();
                             if ($id == $value) {
-                                $html.='<option value="' . $id . '" selected>' . $label . '</option>';
+                                $html.='<option value="' . $id . '" selected>' . $l->getLibelle() . '</option>';
                             } else {
-                                $html.='<option value="' . $id . '">' . $label . '</option>';
+                                $html.='<option value="' . $id . '">' . $l->getLibelle() . '</option>';
                             }
                         }
             $html.='</select>
@@ -134,7 +132,7 @@ function champSelect($label, $name, $liste, $value) {
  * @return type
  */
 function champSelectQuery($label, $name, $query, $value = null) {
-    $liste = Connexion::query($query);
+    $liste = Connection::query($query);
     return champSelect($label, $name, $liste, $value);
 }
 

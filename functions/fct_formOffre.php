@@ -12,14 +12,16 @@ function formulaireModificationOffre($idOffre){
 }
     
 function formulaireOffre($offre) {
+    $typeContratDAO = new typeContratDAO();
+    $listeTypesContrat = $typeContratDAO->typeContratList();
 
-    $html = '<form action=".?page=validationFormulaireOffre" method="POST" class="form-horizontal">
+    $html = '<form action="" method="POST" class="form-horizontal">
             <input type="hidden" name="id" value="'.$offre->getId().'">'
             . champTexte('Libellé', 'libelle', $offre->getLibelle())
             . champTexte('Durée','duree', $offre->getDuree())
-            . champTexte('Decription mission','descriptionMission', $offre->getDecriptionMission())
+            . champTexte('Decription mission','descriptionMission', $offre->getDescriptionMission())
             . champDate('Date début','dateDebut', $offre->getDateDebut())
-            . champSelectQuery('Type Contrat', 'id_typeContrat', 'SELECT `id` FROM typeContrat',$valeur=null)
+            . champSelect('Type contrat', 'idTypeContrat', $listeTypesContrat, $offre->getId_typeContrat())
             . btnSubmit('validerOffre')
             . '</form>';
     return $html;

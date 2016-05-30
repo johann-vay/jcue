@@ -49,9 +49,9 @@ class postulerDAO {
         }
     }
     
-    public function addPostule($postuler){
+    public function addPostuler($postuler){
         $query = 'INSERT INTO postuler (id_utilisateur, id_offre) '
-                . 'VALUES ('.$postuler->getIdUtilisateur().', '.$postuler->getId_offre.')';
+                . 'VALUES ('.$postuler->getIdUtilisateur().', '.$postuler->getId_offre().')';
         $result = Connection::exec($query);
         return $result;
     }
