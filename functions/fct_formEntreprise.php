@@ -21,3 +21,9 @@ function formulaireEntreprise($entreprise) {
             . '</form>';
     return $html;
 }
+
+
+function lienEntreprise($entrepriseId, $texte){
+     $html = '<a href=".?page=entreprise&entrepriseId=' . $entrepriseId . '">'.$texte.'</a>';
+    return $html;
+}

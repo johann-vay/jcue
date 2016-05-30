@@ -16,36 +16,36 @@ include('../pages/templates/menu.php');
     <!-- Main content -->
     <section class="content">
         <!-- Info boxes -->
-        <div class="row">
-            <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
-                <div class="info-box">
-                    <a href=""><span class="info-box-icon bg-aqua"><i class="fa fa-file-text"></i></span></a>
-                    <div class="info-box-content">
-                        <span class="info-box-text"><strong>Utilisateurs</strong></span>
-                        <span class="info-box-number">
-                            <?php 
-                            $userDAO = new UserDAO();
-                            echo $userDAO->nbUsers();
-                            ?>
-                        </span>
-                    </div><!-- /.info-box-content -->
-                </div><!-- /.info-box -->
-            </div><!-- /.col -->
-            <?php
-            /*
-            if ($_SESSION['idTypeUser'] == 1){
-                echo '<div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
-                        <div class="info-box">
-                            <a href=".?page=listeArchives"><span class="info-box-icon bg-green"><i class="fa fa-archive"></i></span></a>
-                            <div class="info-box-content">
-                                <span class="info-box-text">Fiches archivées</span>
-                                <span class="info-box-number">'. nbFichesArchivees().'</span>
-                            </div><!-- /.info-box-content -->
-                        </div><!-- /.info-box -->
-                    </div><!-- /.col -->
+             <?php
+            
+            if ($_SESSION['userType'] == 1){
+                $postulerDAO = new postulerDAO();
+                $offreDAO = new offreDAO();
+                echo '<div class="row">
+                        <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
+                            <div class="info-box">
+                                <a href=".?page=listeOffresPostulees"><span class="info-box-icon bg-green"><i class="fa fa-file-text"></i></span></a>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Offres postulées</span>
+                                    <span class="info-box-number">'.$postulerDAO->nbOffresPostulees($_SESSION['idUser']).'</span>
+                                </div><!-- /.info-box-content -->
+                            </div><!-- /.info-box -->
+                        </div><!-- /.col -->
                     <!-- fix for small devices only -->
                     <div class="clearfix visible-sm-block"></div>
-            </div><!-- /.row -->
+                    
+                    <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
+                            <div class="info-box">
+                                <a href=".?page=listeOffresNonPostulees"><span class="info-box-icon bg-green"><i class="fa fa-file-text"></i></span></a>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Offres non postulées</span>
+                                    <span class="info-box-number">'.$offreDAO->nbOffresNonPostulees($_SESSION['idUser']).'</span>
+                                </div><!-- /.info-box-content -->
+                            </div><!-- /.info-box -->
+                        </div><!-- /.col -->
+                    <!-- fix for small devices only -->
+                    <div class="clearfix visible-sm-block"></div>
+            </div><!-- /.row -->';/*
         
             <div class="row">
                 <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
@@ -71,10 +71,22 @@ include('../pages/templates/menu.php');
                 <!-- fix for small devices only -->
                 <div class="clearfix visible-sm-block"></div>
 
+            </div><!-- /.row -->';*/
+            } elseif ($_SESSION['userType'] == 2) {
+                $offreDAO = new offreDAO();
+                echo '<div class="row"><div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <a href=".?page=listeOffresProposees"><span class="info-box-icon bg-green"><i class="fa fa-file-text"></i></span></a>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Offres proposées</span>
+                                <span class="info-box-number">'.$offreDAO->nbOffresEntreprise($_SESSION['idUser']).'</span>
+                            </div><!-- /.info-box-content -->
+                        </div><!-- /.info-box -->
+                      </div><!-- /.col -->
+                    <!-- fix for small devices only -->
+                    <div class="clearfix visible-sm-block"></div>
             </div><!-- /.row -->';
-            } else {
-                echo '</div><!-- /.row -->';
-            }*/
+            }
             ?>
 
     </section>

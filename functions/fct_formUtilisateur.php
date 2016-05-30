@@ -16,3 +16,8 @@ function formulaireUser($user) {
             . '</form>';
     return $html;
 }
+
+function lienParticulier($particulierId) {
+    $html = '<a href=".?page=particuliere&particulierId=' . $particulierId . '"><i class="fa fa-eye"></i></a>';
+    return $html;
+}

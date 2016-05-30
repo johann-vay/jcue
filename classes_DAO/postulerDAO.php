@@ -17,7 +17,7 @@ class postulerDAO {
     }
     
     public function postulerList(){
-        $query = 'SELECT  id, id_offre '
+        $query = 'SELECT  id_utilisateur, id_offre '
                 . 'FROM postuler';
         $arrayPostulers = Connection::query($query);
         foreach ($arrayPostulers as $postuler) {
@@ -26,13 +26,26 @@ class postulerDAO {
         return $postulers;
     }
     
-    public function postulerDetails($postuler){
-        $query = 'SELECT  id, id_offre '
+    public function postulerDetails($idUtilisateur){
+        $query = 'SELECT  id_utilisateur, id_offre '
                 . 'FROM postuler '
-                . 'WHERE id = '.$postuler;
+                . 'WHERE id_utilisateur = '.$idUtilisateur;
         $arrayDetails = Connection::query($query);
         foreach ($arrayDetails as $postuler) {
             $postuler[] = new Postuler($postuler[0], $postuler[1]);
+        }
+    }
+    
+    public function offrePostulee($idUtilisateur, $idOfrre){
+        $query = 'SELECT COUNT(id_offre) '
+                . 'FROM postuler '
+                . 'WHERE id_offre = '.$idOfrre.' '
+                . 'AND id_utilisateur = '.$idUtilisateur;
+        $result = Connection::query($query);
+        if ($result[0][0] == 1){
+            return true;
+        } else {
+            return false;
         }
     }
     
@@ -57,5 +70,25 @@ class postulerDAO {
                 . 'AND id_offre = '.$postuler->getId_offre();
         $result = Connection::exec($query);
         return $result;
+    }
+    
+    function nbOffresPostulees($idUtilisateur){
+        $query = 'SELECT COUNT(id_utilisateur) '
+                . 'FROM postuler '
+                . 'WHERE id_utilisateur = '.$idUtilisateur;
+        $result = Connection::query($query);
+        return $result[0][0];
+    }
+    
+    public function postulants($idOffre){
+        $userDAO = new UserDAO();
+        $query = 'SELECT id_utilisateur '
+                . 'FROM postuler '
+                . 'WHERE id_offre = '.$idOffre;
+        $arrayPostulants = Connection::query($query);
+        foreach ($arrayPostulants as $idPostulant) {
+            $postulants[] = $userDAO->userDetails($idPostulant[0]);
+        }
+        return $postulants;
     }
 }

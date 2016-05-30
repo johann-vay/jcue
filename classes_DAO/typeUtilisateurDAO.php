@@ -31,7 +31,7 @@ class TypeUtilisateurDAO {
                 . 'FROM typeutilisateur '
                 . 'WHERE id = '.$idTypeUtilisateur;
         $arrayDetails = Connection::query($query);
-        $typeUtilisateur = new TypeUtilisateur($arrayDetails[0][1], $arrayDetails[0][0]);
+        $typeUtilisateur = new TypeUtilisateur($arrayDetails[0][0], $arrayDetails[0][1]);
         return $typeUtilisateur;
     }
     

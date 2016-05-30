@@ -16,9 +16,43 @@ class offreDAO {
     function __construct() {
     }
     
-    public function offreList(){
+    public function offresNonPostuleesList($idUilisateur){
         $query = 'SELECT  id, libelle, duree, descriptionMission, dateDebut, id_utilisateur, id_typeContrat '
-                . 'FROM offre';
+                . 'FROM offre '
+                . 'WHERE offre.id NOT IN ( SELECT postuler.id_offre '
+                                        . 'FROM postuler '
+                                        . 'WHERE postuler.id_utilisateur = '.$idUilisateur.')';
+        $arrayOffres = Connection::query($query);
+        if (!empty($arrayOffres)){
+            foreach ($arrayOffres as $offre) {
+                $objetOffre = new Offre($offre[1], $offre[2], $offre[3], $offre[4], $offre[5], $offre[6], $offre[0]);
+                $offres[] = $objetOffre;
+            }
+            return $offres;
+        }
+        
+    }
+    public function offresPostuleesList($idUilisateur){
+        $query = 'SELECT  id, libelle, duree, descriptionMission, dateDebut, id_utilisateur, id_typeContrat '
+                . 'FROM offre '
+                . 'WHERE offre.id IN ( SELECT postuler.id_offre '
+                                        . 'FROM postuler '
+                                        . 'WHERE postuler.id_utilisateur = '.$idUilisateur.')';
+        $arrayOffres = Connection::query($query);
+        if (!empty($arrayOffres)){
+            foreach ($arrayOffres as $offre) {
+                $objetOffre = new Offre($offre[1], $offre[2], $offre[3], $offre[4], $offre[5], $offre[6], $offre[0]);
+                $offres[] = $objetOffre;
+            }
+            return $offres;
+        }
+        
+    }
+    
+    public function offresProposeesList($idEntreprise){
+        $query = 'SELECT  id, libelle, duree, descriptionMission, dateDebut, id_utilisateur, id_typeContrat '
+                . 'FROM offre '
+                . 'WHERE offre.id_utilisateur = '.$idEntreprise;
         $arrayOffres = Connection::query($query);
         if (!empty($arrayOffres)){
             foreach ($arrayOffres as $offre) {
@@ -35,9 +69,9 @@ class offreDAO {
                 . 'FROM offre '
                 . 'WHERE id = '.$offre;
         $arrayDetails = Connection::query($query);
-        foreach ($arrayDetails as $offre) {
-            $offre[] = new Offre($offre[0], $offre[1], $offre[2], $offre[3], $offre[4], $offre[5], $offre[6]);
-        }
+        $offre = new Offre($arrayDetails[0][1], $arrayDetails[0][2], $arrayDetails[0][3], $arrayDetails[0][4], $arrayDetails[0][5], $arrayDetails[0][6], $arrayDetails[0][0]);
+        
+        return $offre;
     }
     public function addOffre($offre){
         $query = 'INSERT INTO offre (id, libelle, duree, descriptionMission, dateDebut, id_utilisateur, id_typeContrat) '
@@ -61,5 +95,23 @@ class offreDAO {
                 . 'WHERE id = '.$offre->getId();
         $result = Connection::exec($query);
         return $result;
+    }
+    
+    public function nbOffresEntreprise($idUtilisateur){
+        $query = 'SELECT COUNT(id) '
+                . 'FROM offre '
+                . 'WHERE id_utilisateur = '.$idUtilisateur;
+        $result = Connection::query($query);
+        return $result[0][0];
+    }
+    
+    public function nbOffresNonPostulees($idUtilisateur){
+        $query = 'SELECT COUNT(offre.id) '
+                . 'FROM offre '
+                . 'WHERE offre.id NOT IN (SELECT postuler.id_offre '
+                                        . 'FROM postuler '
+                                        . 'WHERE postuler.id_utilisateur = '.$idUtilisateur.')';
+        $result = Connection::query($query);
+        return $result[0][0];
     }
 }

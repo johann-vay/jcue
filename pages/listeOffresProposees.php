@@ -10,7 +10,7 @@ include('../pages/templates/menu.php');
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Liste des offres
+            Liste des offres proposées
             
         </h1>
     </section>
@@ -26,7 +26,7 @@ include('../pages/templates/menu.php');
                                     $offreDAO = new offreDAO();
                                     $typeContratDAO = new typeContratDAO();
                                     $userDAO = new UserDAO();
-                                    $listeOffres = $offreDAO->offreList();
+                                    $listeOffresProposees = $offreDAO->offresProposeesList($_SESSION['idUser']);
                                     
                                     echo '<table class="table table-bordered table-hover dataTable">'
                                             . '<thead>'
@@ -35,19 +35,19 @@ include('../pages/templates/menu.php');
                                                 . '</tr>'
                                             . '</thead>'
                                             . '<tbody>';
-                                                if (isset($listeOffres)){
-                                                   foreach ($listeOffres as $offre) {
+                                                if (isset($listeOffresProposees)){
+                                                   foreach ($listeOffresProposees as $offre) {
                                                         $idTypeContrat = $offre->getId_typeContrat();
                                                         $typeContrat = $typeContratDAO->typeContratDetails($idTypeContrat);
 
                                                         $idEmetteur = $offre->getId_utilisateur();
                                                         $emetteur = $userDAO->userDetails($idEmetteur);
                                                         echo '<tr>'
-                                                                .'<td>' . $offre->getId() . '</td>'
+                                                                .'<td>' . lienOffre($offre->getId()) . '</td>'
                                                                 .'<td>' . $offre->getLibelle(). '</td>'
                                                                 .'<td>' . $offre->getDuree() . '</td>'
                                                                 .'<td>' . $offre->getDescriptionMission() . '</td>'
-                                                                .'<td>' . $emetteur->getLogin() . '</td>'
+                                                                .'<td>' . $emetteur->getRaisonSociale() . '</td>'
                                                                 .'<td>' . $typeContrat->getLibelle() . '</td>'
 
                                                             .'</tr>';

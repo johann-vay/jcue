@@ -62,14 +62,14 @@
                                     <li class="user-header">
                                         <p>
                                             <?php
-                                            $userDAO = new UserDAO();
-                                            $user = $userDAO->userDetails($_SESSION['idUser']);
-                                            $userType = $user->getType();
-                                            /*if ($userType == 'Particulier'){
-                                                $particulierDAO = new particulierDAO();
-                                                $particulier = $particulierDAO->particulierDetails($_SESSION['idUser']);
-                                                echo $particulier->getNom().' '.$particulier->getPrenom().' - '.$user->getType();
-                                            }*/
+                                            $typeUtilisateurDAO = new TypeUtilisateurDAO();
+                                            $idType = $_SESSION['userType'];
+                                            $typeUtilisateur = $typeUtilisateurDAO->typeUtilisateurDetails($idType);
+                                            if ($_SESSION['userType'] == 1 || $_SESSION['userType'] == 3){
+                                                echo $_SESSION['prenom'].' '.$_SESSION['nom'].' - '.$typeUtilisateur->getLibelle();
+                                            } elseif ($_SESSION['userType'] == 2) {
+                                                echo $_SESSION['raisonSociale'].' - '.$typeUtilisateur->getLibelle();
+                                            }
                                             ?>
                                         </p>
                                     </li>
