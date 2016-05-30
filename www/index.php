@@ -19,8 +19,8 @@ include('../required.php');
 // Authentification
 // Si la variable $_SESSION['login'] n'est pas initialisée et qu'une page est entrée dans l'url, on renvoie vers la page de login
 if(!isset($_SESSION['login'])){
-    if(isset($_GET['page']) && $_GET['page'] != 'validationFormLogin' || !isset($_GET['page'])){
-            $_GET['page'] = 'login';
+    if(isset($_GET['page']) && $_GET['page'] != 'validationFormLogin' && $_GET['page'] != 'choixType' && $_GET['page'] != 'inscription' && $_GET['page'] != 'validInscription' || !isset($_GET['page'])){
+        $_GET['page'] = 'login';
     }
 }
 

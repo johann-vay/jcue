@@ -21,3 +21,11 @@ function lienParticulier($particulierId) {
     $html = '<a href=".?page=particuliere&particulierId=' . $particulierId . '"><i class="fa fa-eye"></i></a>';
     return $html;
 }
+
+function saltHash($password){
+    $prefixe ='Gz55ZEf6F';
+    $suffixe ='ZERqg48D77d';
+    $passwordHash = openssl_digest($prefixe.$password.$suffixe, 'sha256');
+    
+    return $passwordHash;
+}

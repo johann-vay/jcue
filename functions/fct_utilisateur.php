@@ -96,19 +96,6 @@ function ajouterUser($nom, $prenom, $login, $password, $email, $typeUtilisateur)
     return Connexion::exec($query);
 }
 
-/**
- * Sale et hache le mot de passe d'un utilisateur
- * 
- * @param string $password  Mot de passe d'un utilisateur
- * @return string  Mot de passe salé et haché
- */
-function saltHash($password){
-    $prefixe ='Gz55ZEf6F';
-    $suffixe ='ZERqg48D77d';
-    $passwordHash = openssl_digest($prefixe.$password.$suffixe, 'sha512');
-    
-    return $passwordHash;
-}
 
 /**
  * Renvoie un tableau contenant les données d'un utilisateur (Utile pour la fiche utilisateur)

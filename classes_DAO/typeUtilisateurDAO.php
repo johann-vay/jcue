@@ -21,9 +21,9 @@ class TypeUtilisateurDAO {
                 . 'FROM typeutilisateur';
         $arrayTypeUtilisateur = Connection::query($query);
         foreach ($arrayTypeUtilisateur as $typeUtilisateur) {
-            $typeUtilisateur[] = new TypeUtilisateur($typeUtilisateur[1], $typeUtilisateur[0]);
+            $typeUtilisateurs[] = new TypeUtilisateur($typeUtilisateur[0], $typeUtilisateur[1]);
         }
-        return $typeUtilisateur;
+        return $typeUtilisateurs;
     }
     
     public function typeUtilisateurDetails($idTypeUtilisateur){

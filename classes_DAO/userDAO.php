@@ -51,9 +51,17 @@ class UserDAO {
         return $user;
     }
     
-    public function addUser($user){
+    public function addParticulier($user){
         $query = 'INSERT INTO utilisateur (nom, prenom, adresse, codePostal, ville, mail, telephone, login, password, raisonSociale, numeroSIRET, id_typeutilisateur) '
                 . 'VALUES ("'.$user->getNom().'", "'.$user->getPrenom().'", "'.$user->getAdresse().'", "'.$user->getCodePostal().'", "'.$user->getVille().'", '
+                . '"'.$user->getMail().'", "'.$user->getTelephone().'", "'.$user->getLogin().'", "'.$user->getPassword().'", NULL, NULL, '.$user->getType().')';
+        var_dump($query);
+        $result = Connection::exec($query);
+        return $result;
+    }
+    public function addEntreprise($user){
+        $query = 'INSERT INTO utilisateur (nom, prenom, adresse, codePostal, ville, mail, telephone, login, password, raisonSociale, numeroSIRET, id_typeutilisateur) '
+                . 'VALUES (NULL, NULL, "'.$user->getAdresse().'", "'.$user->getCodePostal().'", "'.$user->getVille().'", '
                 . '"'.$user->getMail().'", "'.$user->getTelephone().'", "'.$user->getLogin().'", "'.$user->getPassword().'", "'.$user->getRaisonSociale().'", '
                 . '"'.$user->getNumeroSiret.'", '.$user->getType().')';
         $result = Connection::exec($query);
