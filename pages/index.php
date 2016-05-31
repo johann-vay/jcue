@@ -86,6 +86,33 @@ include('../pages/templates/menu.php');
                     <!-- fix for small devices only -->
                     <div class="clearfix visible-sm-block"></div>
             </div><!-- /.row -->';
+            } elseif ($_SESSION['userType'] == 3) {
+                $userDAO = new UserDAO();
+                $offreDAO = new offreDAO();
+                echo '<div class="row"><div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
+                            <div class="info-box">
+                                <a href=".?page=listeUtilisateurs"><span class="info-box-icon bg-green"><i class="fa fa-users"></i></span></a>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Utilisateurs</span>
+                                    <span class="info-box-number">'.$userDAO->nbUsers().'</span>
+                                </div><!-- /.info-box-content -->
+                            </div><!-- /.info-box -->
+                          </div><!-- /.col -->
+                        <!-- fix for small devices only -->
+                        <div class="clearfix visible-sm-block"></div>
+                </div><!-- /.row -->';
+                echo '<div class="row"><div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
+                            <div class="info-box">
+                                <a href=".?page=listeOffres"><span class="info-box-icon bg-green"><i class="fa fa-file"></i></span></a>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Offres</span>
+                                    <span class="info-box-number">'.$offreDAO->nbOffres().'</span>
+                                </div><!-- /.info-box-content -->
+                            </div><!-- /.info-box -->
+                          </div><!-- /.col -->
+                        <!-- fix for small devices only -->
+                        <div class="clearfix visible-sm-block"></div>
+                </div><!-- /.row -->';
             }
             ?>
 

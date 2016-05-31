@@ -29,6 +29,13 @@ class offreDAO {
         }
         
     }
+    public function nbOffres(){
+        $query = 'SELECT COUNT(id) '
+                . 'FROM offre';
+        $result = Connection::query($query);
+        return $result[0][0];
+    }
+    
     public function offresNonPostuleesList($idUilisateur){
         $query = 'SELECT  id, libelle, duree, descriptionMission, dateDebut, id_utilisateur, id_typeContrat '
                 . 'FROM offre '
@@ -77,10 +84,10 @@ class offreDAO {
         
     }
     
-    public function offreDetails($offre){
+    public function offreDetails($offreId){
         $query = 'SELECT  id, libelle, duree, descriptionMission, dateDebut, id_utilisateur, id_typeContrat '
                 . 'FROM offre '
-                . 'WHERE id = '.$offre;
+                . 'WHERE id = '.$offreId;
         $arrayDetails = Connection::query($query);
         $offre = new Offre($arrayDetails[0][1], $arrayDetails[0][2], $arrayDetails[0][3], $arrayDetails[0][4], $arrayDetails[0][5], $arrayDetails[0][6], $arrayDetails[0][0]);
         
@@ -104,10 +111,12 @@ class offreDAO {
     }
     
     public function deleteOffre($offre){
-        $query = 'DELETE FROM offre '
+        $query1 = 'DELETE FROM postuler '
+                . 'WHERE id_offre = '.$offre->getId();
+        Connection::exec($query1);
+        $query2 = 'DELETE FROM offre '
                 . 'WHERE id = '.$offre->getId();
-        $result = Connection::exec($query);
-        return $result;
+        Connection::exec($query2);
     }
     
     public function nbOffresEntreprise($idUtilisateur){

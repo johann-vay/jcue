@@ -32,6 +32,7 @@ include('../pages/templates/menu.php');
                                             . '<thead>'
                                                 . '<tr>'
                                                     . '<th>Utilisateur</th><th>Nom</th><th>Prenom</th><th>Raison Sociale</th><th>Telephone</th><th>Mail</th><th>Type</th>'
+                                                    . '<th></th>'
                                                 . '</tr>'
                                             . '</thead>'
                                             . '<tbody>';
@@ -47,9 +48,13 @@ include('../pages/templates/menu.php');
                                                                 .'<td>' . $user->getRaisonSociale() . '</td>'
                                                                 .'<td>' . $user->getTelephone() . '</td>'
                                                                 .'<td>' . $user->getMail() . '</td>'
-                                                                .'<td>' . $typeUser->getLibelle() . '</td>'
-
-                                                            .'</tr>';
+                                                                .'<td>' . $typeUser->getLibelle() . '</td>'.  modalSuppressionUser($user->getId());
+                                                                if ($_SESSION['userType'] == 3 && $_SESSION['idUser'] != $user->getId()){
+                                                                    echo '<td>' . lienSupprimerUser($user->getId()) . '</td>';
+                                                                }else {
+                                                                    echo '<td></td>';
+                                                                }
+                                                            echo '</tr>';
                                                     } 
                                                 }
                                                    

@@ -38,17 +38,17 @@ if(!isset($_GET['page'])){
             $rq = 'SELECT COUNT(id) '
                 . 'FROM utilisateur '
                 . 'WHERE id = '.$_GET['userId'];
-            $result = Connexion::query($rq);
+            $result = Connection::query($rq);
             if ($result[0][0] == 0){
                 header('Location:.?page=notFound');
             }
         }
         // Si la variable 'ficheId' a été placée dans l'url est qu'elle ne correspond à aucune fiche, on renvoie à la page 'notFound'      
-        if (isset($_GET['ficheId'])){
+        if (isset($_GET['offreId'])){
             $rq = 'SELECT COUNT(id) '
-                . 'FROM fiche '
-                . 'WHERE id = '.$_GET['ficheId'];
-            $result = Connexion::query($rq);
+                . 'FROM offre '
+                . 'WHERE id = '.$_GET['offreId'];
+            $result = Connection::query($rq);
             if ($result[0][0] == 0){
                 header('Location:.?page=notFound');
             }

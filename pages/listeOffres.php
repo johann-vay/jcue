@@ -31,7 +31,7 @@ include('../pages/templates/menu.php');
                                     echo '<table class="table table-bordered table-hover dataTable">'
                                             . '<thead>'
                                                 . '<tr>'
-                                                    . '<th>Offre</th><th>Libelle</th><th>Duree</th><th>Description mission</th><th>Emetteur</th><th>Type de contrat</th>'
+                                                    . '<th>Offre</th><th>Libelle</th><th>Duree</th><th>Description mission</th><th>Emetteur</th><th>Type de contrat</th><th></th>'
                                                 . '</tr>'
                                             . '</thead>'
                                             . '<tbody>';
@@ -48,9 +48,12 @@ include('../pages/templates/menu.php');
                                                                 .'<td>' . $offre->getDuree() . '</td>'
                                                                 .'<td>' . $offre->getDescriptionMission() . '</td>'
                                                                 .'<td>' . $emetteur->getRaisonSociale() . '</td>'
-                                                                .'<td>' . $typeContrat->getLibelle() . '</td>'
+                                                                .'<td>' . $typeContrat->getLibelle() . '</td>'.  modalSuppressionOffre($offre->getId());
+                                                                if ($_SESSION['userType'] == 3){
+                                                                    echo '<td>' . lienSupprimerOffre($offre->getId()) . '</td>';
+                                                                }
 
-                                                            .'</tr>';
+                                                            echo '</tr>';
                                                     } 
                                                 }
                                                    

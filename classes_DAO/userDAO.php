@@ -79,10 +79,15 @@ class UserDAO {
     }
     
     public function deleteUser($user){
-        $query = 'DELETE FROM utilisateur '
+        $query1 = 'DELETE FROM postuler '
+                . 'WHERE id_utilisateur = '.$user->getId();
+        Connection::exec($query1);
+        $query2 = 'DELETE FROM offre '
+                . 'WHERE id_utilisateur = '.$user->getId();
+        Connection::exec($query2);
+        $query3 = 'DELETE FROM utilisateur '
                 . 'WHERE id = '.$user->getId();
-        $result = Connection::exec($query);
-        return $result;
+        Connection::exec($query3);
     }
     
     public function nbUsers(){
