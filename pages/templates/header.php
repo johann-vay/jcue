@@ -75,9 +75,9 @@
                                     </li>
                                     <?php 
                                     echo '<li class="user-footer">'
-                                            . '<div class="pull-left">'
+                                            . '<!--<div class="pull-left">'
                                                 . '<a href="" class="btn btn-default btn-flat">Profil</a>'
-                                            . '</div>'
+                                            . '</div>-->'
                                             . '<div class="pull-right">'
                                                 . '<a href=".?page=deconnexion" class="btn btn-default btn-flat">Déconnexion</a>'
                                             . '</div>'
