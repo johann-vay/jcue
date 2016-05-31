@@ -60,6 +60,8 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['login'].' '; ?><span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li class="user-header">
+                                        <img src="css/logo.png" class="img-bordered" alt="User Image">
+
                                         <p>
                                             <?php
                                             $typeUtilisateurDAO = new TypeUtilisateurDAO();

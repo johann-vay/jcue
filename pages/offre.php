@@ -76,7 +76,7 @@ include('../pages/templates/menu.php');
                                                            foreach ($postulants as $postulant) {
 
                                                                 echo '<tr>'
-                                                                        .'<td>' . lienParticulier($postulant->getId()) . '</td>'
+                                                                        .'<td></td>'
                                                                         .'<td>' . $postulant->getNom().' '.$postulant->getPrenom(). '</td>'
                                                                         .'<td>' . $postulant->getMail() . '</td>'
                                                                         .'<td>' . $postulant->getTelephone() . '</td>'

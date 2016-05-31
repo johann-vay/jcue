@@ -27,3 +27,8 @@ function lienEntreprise($entrepriseId, $texte){
      $html = '<a href=".?page=entreprise&entrepriseId=' . $entrepriseId . '">'.$texte.'</a>';
     return $html;
 }
+
+function lienEntrepriseTableau($entrepriseId) {
+    $html = '<a href=".?page=entreprise&entrepriseId=' . $entrepriseId . '"><i class="fa fa-eye"></i></a>';
+    return $html;
+}

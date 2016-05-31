@@ -86,9 +86,15 @@ class postulerDAO {
                 . 'FROM postuler '
                 . 'WHERE id_offre = '.$idOffre;
         $arrayPostulants = Connection::query($query);
-        foreach ($arrayPostulants as $idPostulant) {
-            $postulants[] = $userDAO->userDetails($idPostulant[0]);
+        if (isset($arrayPostulants)){
+            foreach ($arrayPostulants as $idPostulant) {
+                $postulants[] = $userDAO->userDetails($idPostulant[0]);
+            }
+            if (isset($postulants)){
+                return $postulants;
+            }
+            
         }
-        return $postulants;
+        
     }
 }

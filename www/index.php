@@ -30,8 +30,8 @@ if(!isset($_GET['page'])){
 } else {
     // Gestion des pages existantes
     // Si la variable 'page' a été placée dans l'url est qu'elle ne correspond à aucune page, on renvoie à la page 'notFound'
-    if(!file_exists('..\pages\\'.$_GET['page'].'.php')){
-        header('Location:.?page=notFound');
+    if(file_exists('..\pages\\'.$_GET['page'].'.php')){
+        $_GET['page'] = $_GET['page'];
     } else {
         // Si la variable 'userId' a été placée dans l'url est qu'elle ne correspond à aucun utilisateur, on renvoie à la page 'notFound'
         if (isset($_GET['userId'])){

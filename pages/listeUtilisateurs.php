@@ -10,7 +10,7 @@ include('../pages/templates/menu.php');
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Liste des offres postulées
+            Liste des utilisateurs
             
         </h1>
     </section>
@@ -41,9 +41,13 @@ include('../pages/templates/menu.php');
                                                         $idTypeUser = $user->getType();
                                                         $typeUser = $typeUtilisateurDAO->typeUtilisateurDetails($idTypeUser);
 
-                                                        echo '<tr>'
-                                                                .'<td>' . $user->getId() . '</td>'
-                                                                .'<td>' . $user->getNom(). '</td>'
+                                                        echo '<tr>';
+                                                            if ($user->getRaisonSociale() != null){
+                                                                echo '<td>' . lienEntrepriseTableau($user->getId()) . '</td>';
+                                                            }else {
+                                                                echo '<td></td>';
+                                                            }
+                                                                echo'<td>' . $user->getNom(). '</td>'
                                                                 .'<td>' . $user->getPRenom() . '</td>'
                                                                 .'<td>' . $user->getRaisonSociale() . '</td>'
                                                                 .'<td>' . $user->getTelephone() . '</td>'
