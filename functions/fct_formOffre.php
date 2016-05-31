@@ -33,7 +33,7 @@ function lienSupprimerOffre($offreId){
 }
 
 function modalSuppressionOffre($offreId){
-    $html = '<div class="modal modal-danger" id="modalSupprOffr'.$offreId.'">
+    $html = '<div class="modal modal-danger" id="modalSupprOffre'.$offreId.'">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
